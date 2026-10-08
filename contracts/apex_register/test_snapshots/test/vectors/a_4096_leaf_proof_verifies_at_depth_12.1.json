@@ -1,0 +1,3213 @@
+{
+  "generators": {
+    "address": 7,
+    "nonce": 0,
+    "mux_id": 0
+  },
+  "auth": [
+    [],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "init",
+              "args": [
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4"
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M"
+                },
+                {
+                  "symbol": "KES"
+                },
+                {
+                  "u32": 2
+                },
+                {
+                  "u64": "864000"
+                },
+                {
+                  "u64": "432000"
+                },
+                {
+                  "u64": "3888000"
+                },
+                {
+                  "u32": 90
+                },
+                {
+                  "u32": 10000
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "register_member",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
+                },
+                {
+                  "bytes": "330d30bff909bda1d50d208d497774a78995d99764f720747413bf6a8ed483a0"
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "register_member",
+              "args": [
+                {
+                  "u32": 2
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4"
+                },
+                {
+                  "bytes": "f78d35332555298cffa2a23f17efa2ba105c4cce59705d12d82407354e382289"
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "register_member",
+              "args": [
+                {
+                  "u32": 3
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM"
+                },
+                {
+                  "bytes": "8556b97af29924b3a17c36cb50d4c8bc30dab2f55e2298841362d2c0fcbf6b24"
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "set_custodian",
+              "args": [
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                },
+                {
+                  "bool": true
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "open_period",
+              "args": [
+                {
+                  "u64": "1788134400"
+                },
+                {
+                  "u32": 0
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "attest_cash",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                },
+                {
+                  "i128": "0"
+                },
+                {
+                  "u64": "1788134400"
+                },
+                {
+                  "bytes": "b111c6e1d318f203063e5c16bab43c108326af0aa2f7b65760c95547a43dbe52"
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "post_root",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "map": [
+                    {
+                      "key": {
+                        "symbol": "dep"
+                      },
+                      "val": {
+                        "i128": "4162885"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "hash"
+                      },
+                      "val": {
+                        "bytes": "b16814a211c6a12e3fe0e123236fb62da89aaf16fca987702d507f7d6c7d78a4"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "loan"
+                      },
+                      "val": {
+                        "i128": "6954675"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "u32": 4096
+                },
+                {
+                  "bytes": "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80"
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "confirm",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "u32": 1
+                },
+                {
+                  "map": [
+                    {
+                      "key": {
+                        "symbol": "arrears_days"
+                      },
+                      "val": {
+                        "u32": 0
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "balance"
+                      },
+                      "val": {
+                        "i128": "5095"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "cp"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "index"
+                      },
+                      "val": {
+                        "u32": 4095
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "kind"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "line_ref"
+                      },
+                      "val": {
+                        "bytes": "908b4b7c542f9de18b2c039c0a48f0afc1a27019e85a94f9788fea19eee8c548"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "period"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "salt"
+                      },
+                      "val": {
+                        "bytes": "60f882ebcf524f3ef6bd0a2f7e39e678335ac62fa279f6094494c01b62e25091"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "vec": [
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "0"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "553be284e18eff568716c0222b73196af001873dd7b6f51d259560e4de5dc85e"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "4594"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "5092"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "923b2e66a82bd358fe1f672aa93c79e9fb7c002bc2fa83f401be4c8d015fe4b6"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "4593"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "5089"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "8bf0e18789dbc7995926d2501d85795aa6d7fb775c81198686d9d0b6ba32e199"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "13769"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "15249"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "f0b22d4d4df08e1324ab5481acf3a4d6bdb495e4b3d0dd584d3e250329c30a18"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "22919"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "25355"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "396d829b1cce71840a3e4a4a1f21567f8f576806556dcd840e12427b4cd7cccc"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "50289"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "55517"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "c420e32dc049a52b6d84eaee8213825614e1fd158b74157712dad29ebc69ca85"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "95503"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "104979"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "47e4ef17b024ec06e1eb3b2f5baf0d45efb7512ee13b05d6d90b3246c87e3244"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "193489"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "210829"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "a9714ebc7bb041c0f7637e241445b1f4eb25129ff0d090afd14a419bb735f663"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "374319"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "400435"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "87cc4e3d89bb219f7e9141b887f71b6d85148e12a7d158d86e3a5931cc86874b"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "720209"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "739917"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "e9cbc3e057b20c2e8f3d0559ec80e4816f2cb4c4a10a73cbda94445c43eece35"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "1305263"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1213619"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "5c06db13f08f8c5376a316da503b4573fea877bb60195071075e65de2ce1bd6f"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2089809"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1381709"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "fe942447e2f346dbb511c59db7c329e4908c738c0f1a738f3b7744cfdbfe8ebc"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2079919"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "confirm",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "u32": 1
+                },
+                {
+                  "map": [
+                    {
+                      "key": {
+                        "symbol": "arrears_days"
+                      },
+                      "val": {
+                        "u32": 0
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "balance"
+                      },
+                      "val": {
+                        "i128": "1000"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "cp"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "index"
+                      },
+                      "val": {
+                        "u32": 0
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "kind"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "line_ref"
+                      },
+                      "val": {
+                        "bytes": "e891ec58201cf3be5a3f2257d2617b0878838396cb042ebf6a5518dc16c632e4"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "period"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "salt"
+                      },
+                      "val": {
+                        "bytes": "3ff579a546fa2c16d51fe24df987ed35586288212aeb8c1421aceaf4eeb95cb1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "vec": [
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "0"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "2b8db9ca1e28d1f2e4e818f18b6cdbd11e464e00dbf79e929f60824e341bb062"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "501"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1003"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "c145713e883a770462b14072055cff78ca5e913d9b2506c73a5a6c4f0cbfd82c"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "502"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1006"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "83ce9e1be832210bc813e92b652a7e4d086dbc729d2555df6f77f77d587e5755"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "1516"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "3036"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "162ef59a61d10362920c0164c76d9afad0ab8fe1ddc786c802768fd9fbeac239"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2556"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "5120"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "e91987528a377cfd3ab35afe132c21110b32df36b588a34277b7f851eec41fc0"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "5756"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "11528"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "c66b297877042ffe0f975f6f0948a8206014ff2d0e4165b9a4870f5d6a402996"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "11492"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "23016"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "4f92e2a3ddb4bd7ca6d6b4b721ad5a503d4fc670381a99e50fae145322a8d08a"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "25596"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "51256"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "789ab6ffb0f4a5fc5a39917c39e2d59dab3662748edaf832514e610fc49232df"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "58756"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "117640"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "9fecc6e3c8d96256c208d6aa80a13a0458362a316bb3174a3be66b05c37423e1"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "151036"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "302328"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "5c4ecec5f77b94d27eb42684805036123bcef61e7647935ce652389506a9bf4a"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "432132"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "864776"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "d82b8592c79e1b1016fa86df027590826c954d596ce90eb953e89778a5ad50e7"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "1390076"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "2781176"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "c74c3824dcf291d89e786552b302cedb3b370d8bbea64aba87209cec5d3b3d31"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "4874756"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "confirm",
+              "args": [
+                {
+                  "u32": 1
+                },
+                {
+                  "u32": 1
+                },
+                {
+                  "map": [
+                    {
+                      "key": {
+                        "symbol": "arrears_days"
+                      },
+                      "val": {
+                        "u32": 0
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "balance"
+                      },
+                      "val": {
+                        "i128": "3049"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "cp"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "index"
+                      },
+                      "val": {
+                        "u32": 2049
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "kind"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "line_ref"
+                      },
+                      "val": {
+                        "bytes": "0472e0eacd1069189503362419a0c77a853500cb886388e378ebfc66641225b2"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "period"
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "salt"
+                      },
+                      "val": {
+                        "bytes": "7f04c41d4e0c25b559da08166c2c642aad1a6ef74e50583d1a9e19d3f52ee015"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "vec": [
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "0"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "3e644a00e92d6625298db2eb0b4279b1617f17b078bf69f814beffbb97147b25"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2548"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "0"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "c85a525a81045cc50075b54ef5144dd6fbbd2523f237ced86fff58edc3e0bc13"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "5101"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "6107"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "b650ec95e409436fa5c26c710accf242530dd04c76bc2d3663e50750d907472d"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "5107"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "6119"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "73e6b6f8421e23383a4b9470d75f945e433f32278bb7c57797e3747f2db0c26a"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "15357"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "18429"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "bbd4f1bdec29de0041f23b1cc4513b372583d9be5d322cec889f9cd0f982fa69"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "25715"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "30955"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "b22fd4c943a6570b98a18a7749e4f291faf58e371912a8ae67bc0e59660c1708"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "57101"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "69157"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "70f3244b6bc08bbaeb58dd7b92584ab14b85b327362283db03412626088ab1ea"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "111027"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "136059"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "303e94cadd350478fbb9568d803a586a145a3fb10337edc82cd9d9059f5402cd"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "235597"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "295109"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "3a69ffb0d277c19c457aa95ec23489d12296b0d0430be93cb71a0e2e73beecf9"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "498355"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "648635"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "0fe01661264cad8419ad5475b0a1b4c251d32def01c1977b739f28d749800a2b"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "1133901"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1567557"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "35ce511d6c794f93f1ea321f18099c3d849b3b5d851472d50f080667fac4ab62"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2784947"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "1381709"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "fe942447e2f346dbb511c59db7c329e4908c738c0f1a738f3b7744cfdbfe8ebc"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "2079919"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    []
+  ],
+  "ledger": {
+    "protocol_version": 28,
+    "sequence_number": 0,
+    "timestamp": 1788246000,
+    "network_id": "0000000000000000000000000000000000000000000000000000000000000000",
+    "base_reserve": 0,
+    "min_persistent_entry_ttl": 4096,
+    "min_temp_entry_ttl": 16,
+    "max_entry_ttl": 6312000,
+    "ledger_entries": [
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "BoardIndex"
+                  },
+                  {
+                    "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u32": 1
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "BoardIndex"
+                  },
+                  {
+                    "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u32": 2
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "BoardIndex"
+                  },
+                  {
+                    "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u32": 3
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Cash"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "as_of"
+                    },
+                    "val": {
+                      "u64": "1788134400"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "balance"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "custodian"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "late"
+                    },
+                    "val": {
+                      "bool": false
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "statement_hash"
+                    },
+                    "val": {
+                      "bytes": "b111c6e1d318f203063e5c16bab43c108326af0aa2f7b65760c95547a43dbe52"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Custodian"
+                  },
+                  {
+                    "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "bool": true
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Member"
+                  },
+                  {
+                    "u32": 1
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "active"
+                    },
+                    "val": {
+                      "bool": true
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "admitted_at"
+                    },
+                    "val": {
+                      "u64": "1788159600"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "board"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "last_response_period"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "licence_hash"
+                    },
+                    "val": {
+                      "bytes": "330d30bff909bda1d50d208d497774a78995d99764f720747413bf6a8ed483a0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "no"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "overdue_streak"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Member"
+                  },
+                  {
+                    "u32": 2
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "active"
+                    },
+                    "val": {
+                      "bool": true
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "admitted_at"
+                    },
+                    "val": {
+                      "u64": "1788159600"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "board"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "last_response_period"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "licence_hash"
+                    },
+                    "val": {
+                      "bytes": "f78d35332555298cffa2a23f17efa2ba105c4cce59705d12d82407354e382289"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "no"
+                    },
+                    "val": {
+                      "u32": 2
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "overdue_streak"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Member"
+                  },
+                  {
+                    "u32": 3
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "active"
+                    },
+                    "val": {
+                      "bool": true
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "admitted_at"
+                    },
+                    "val": {
+                      "u64": "1788159600"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "board"
+                    },
+                    "val": {
+                      "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "last_response_period"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "licence_hash"
+                    },
+                    "val": {
+                      "bytes": "8556b97af29924b3a17c36cb50d4c8bc30dab2f55e2298841362d2c0fcbf6b24"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "no"
+                    },
+                    "val": {
+                      "u32": 3
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "overdue_streak"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "MemberResp"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 1
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u32": 3
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Period"
+                  },
+                  {
+                    "u32": 1
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "as_of"
+                    },
+                    "val": {
+                      "u64": "1788134400"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "attest_by"
+                    },
+                    "val": {
+                      "u64": "1788678000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "confirm_by"
+                    },
+                    "val": {
+                      "u64": "1789110000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "custodians"
+                    },
+                    "val": {
+                      "vec": [
+                        {
+                          "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "depth"
+                    },
+                    "val": {
+                      "u32": 12
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "file_hash"
+                    },
+                    "val": {
+                      "bytes": "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "id"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "leaf_count"
+                    },
+                    "val": {
+                      "u32": 4096
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "opened_at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "posted_at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "root"
+                    },
+                    "val": {
+                      "map": [
+                        {
+                          "key": {
+                            "symbol": "dep"
+                          },
+                          "val": {
+                            "i128": "4162885"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "hash"
+                          },
+                          "val": {
+                            "bytes": "b16814a211c6a12e3fe0e123236fb62da89aaf16fca987702d507f7d6c7d78a4"
+                          }
+                        },
+                        {
+                          "key": {
+                            "symbol": "loan"
+                          },
+                          "val": {
+                            "i128": "6954675"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "state"
+                    },
+                    "val": {
+                      "u32": 2
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "supersedes"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Resp"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 0
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "booked"
+                    },
+                    "val": {
+                      "i128": "1000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed"
+                    },
+                    "val": {
+                      "i128": "1000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed_arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "evidence_hash"
+                    },
+                    "val": {
+                      "bytes": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "index"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "kind"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "late"
+                    },
+                    "val": {
+                      "bool": false
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "member_no"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "reason"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "verdict"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Resp"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 2049
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "booked"
+                    },
+                    "val": {
+                      "i128": "3049"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed"
+                    },
+                    "val": {
+                      "i128": "3049"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed_arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "evidence_hash"
+                    },
+                    "val": {
+                      "bytes": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "index"
+                    },
+                    "val": {
+                      "u32": 2049
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "kind"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "late"
+                    },
+                    "val": {
+                      "bool": false
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "member_no"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "reason"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "verdict"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Resp"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 4095
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "at"
+                    },
+                    "val": {
+                      "u64": "1788246000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "booked"
+                    },
+                    "val": {
+                      "i128": "5095"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed"
+                    },
+                    "val": {
+                      "i128": "5095"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "claimed_arrears_days"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "evidence_hash"
+                    },
+                    "val": {
+                      "bytes": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "index"
+                    },
+                    "val": {
+                      "u32": 4095
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "kind"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "late"
+                    },
+                    "val": {
+                      "bool": false
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "member_no"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "reason"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "verdict"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "RespBits"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 0
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u128": "1"
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "RespBits"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 16
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u128": "2"
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "RespBits"
+                  },
+                  {
+                    "u32": 1
+                  },
+                  {
+                    "u32": 31
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "u128": "170141183460469231731687303715884105728"
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": {
+                "vec": [
+                  {
+                    "symbol": "Tally"
+                  },
+                  {
+                    "u32": 1
+                  }
+                ]
+              },
+              "durability": "persistent",
+              "val": {
+                "map": [
+                  {
+                    "key": {
+                      "symbol": "cash"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "cash_count"
+                    },
+                    "val": {
+                      "u32": 1
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "cash_late"
+                    },
+                    "val": {
+                      "bool": false
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "confirmed_dep"
+                    },
+                    "val": {
+                      "i128": "9144"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "confirmed_loans"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "deposit_uplift"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "disputed_count"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "disputed_loans_ack"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "disputed_loans_booked"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "late"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "omitted_count"
+                    },
+                    "val": {
+                      "u32": 0
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "recognised_loans"
+                    },
+                    "val": {
+                      "i128": "0"
+                    }
+                  },
+                  {
+                    "key": {
+                      "symbol": "responded"
+                    },
+                    "val": {
+                      "u32": 3
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "key": "ledger_key_contract_instance",
+              "durability": "persistent",
+              "val": {
+                "contract_instance": {
+                  "executable": {
+                    "wasm": "a41146d7d116b29faf18d228425fa97194e16df1d4f3e5d4f51c58ca557fcc6d"
+                  },
+                  "storage": [
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "ApexStaleSince"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u64": "0"
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "Config"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "map": [
+                          {
+                            "key": {
+                              "symbol": "alert_bps"
+                            },
+                            "val": {
+                              "u32": 10000
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "apex"
+                            },
+                            "val": {
+                              "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "attest_window_secs"
+                            },
+                            "val": {
+                              "u64": "432000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "confirm_window_secs"
+                            },
+                            "val": {
+                              "u64": "864000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "currency"
+                            },
+                            "val": {
+                              "symbol": "KES"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "decimals"
+                            },
+                            "val": {
+                              "u32": 2
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "max_period_gap_secs"
+                            },
+                            "val": {
+                              "u64": "3888000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "performing_max_days"
+                            },
+                            "val": {
+                              "u32": 90
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "registrar"
+                            },
+                            "val": {
+                              "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "CurrentPeriod"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u32": 1
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "Custodians"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "vec": [
+                          {
+                            "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "LastClosedAt"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u64": "0"
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "MaxMemberNo"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u32": 3
+                      }
+                    },
+                    {
+                      "key": {
+                        "vec": [
+                          {
+                            "symbol": "MemberCount"
+                          }
+                        ]
+                      },
+                      "val": {
+                        "u32": 3
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "801925984706572462"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "1033654523790656264"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "2032731177588607455"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "4837995959683129791"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "5541220902715666415"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "4270020994084947596"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "6277191135259896685"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "8370022561469687789"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "115220454072064130"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "1194852393571756375"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_data": {
+              "ext": "v0",
+              "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM",
+              "key": {
+                "ledger_key_nonce": {
+                  "nonce": "5806905060045992000"
+                }
+              },
+              "durability": "temporary",
+              "val": "void"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      },
+      {
+        "entry": {
+          "last_modified_ledger_seq": 0,
+          "data": {
+            "contract_code": {
+              "ext": "v0",
+              "hash": "a41146d7d116b29faf18d228425fa97194e16df1d4f3e5d4f51c58ca557fcc6d",
+              "code": "746573745f636f6e74726163745f666f725f636f6e74726163745f69645f4341414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414144324b4d"
+            }
+          },
+          "ext": "v0"
+        },
+        "live_until": 6311999
+      }
+    ]
+  },
+  "events": []
+}

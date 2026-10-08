@@ -1,0 +1,25 @@
+[package]
+name = "board_account"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "M-of-N (default 2-of-3) Ed25519 custom account used as the signing identity of a SACCO board or custodian desk"
+
+[lib]
+# cdylib is the Soroban wasm artifact. rlib is added only so apex_register's tests can
+# register this account natively in the same host and run the real two-signature auth path.
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[features]
+# Test helper that signs a real SorobanAuthorizationEntry with officer keys. Never part of the wasm.
+testutils = ["soroban-sdk/testutils", "dep:ed25519-dalek"]
+
+[dependencies]
+soroban-sdk = { workspace = true }
+ed25519-dalek = { version = "2", optional = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+ed25519-dalek = { version = "2" }

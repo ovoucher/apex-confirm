@@ -1,0 +1,145 @@
+{
+  "note": "Simulated. These numbers illustrate the mechanism only.",
+  "planted": {
+    "L-F1": {
+      "ref": "APX/LN/2024/0031",
+      "cp": 901,
+      "booked": "100000000.00"
+    },
+    "L-F2": {
+      "ref": "APX/LN/2023/0212",
+      "cp": 902,
+      "booked": "80000000.00"
+    },
+    "L-F3": {
+      "ref": "APX/LN/2025/0077",
+      "cp": 903,
+      "booked": "60000000.00"
+    },
+    "L-F4": {
+      "ref": "APX/LN/2025/0019",
+      "cp": 38,
+      "booked": "70000000.00"
+    },
+    "L-F5": {
+      "ref": "APX/LN/2025/0140",
+      "cp": 38,
+      "booked": "60000000.00"
+    },
+    "L-F6": {
+      "ref": "APX/LN/2024/0158",
+      "cp": 5,
+      "booked": "90000000.00"
+    },
+    "L-F7": {
+      "ref": "APX/LN/2025/0044",
+      "cp": 19,
+      "booked": "60000000.00"
+    },
+    "L-F8": {
+      "ref": "APX/LN/2026/0101",
+      "cp": 37,
+      "booked": "48000000.00"
+    }
+  },
+  "period_1": {
+    "as_of": "2026-08-31",
+    "root_dep": "248000000000",
+    "root_loan": "223690000000",
+    "deposit_uplift": "3050000000",
+    "report": {
+      "period": 1,
+      "liabilities": "251050000000",
+      "cash": "30541231855",
+      "recognised_loans": "165460000000",
+      "booked_loans": "223690000000",
+      "unconfirmed_loans": "42730000000",
+      "coverage_bps": "7807",
+      "booked_coverage_bps": "10251",
+      "unresponded": 10,
+      "disputed": 3,
+      "late": 8,
+      "omitted": 1,
+      "flags": 111,
+      "flag_names": [
+        "BELOW_ALERT",
+        "UNCONFIRMED_LOANS",
+        "DISPUTES",
+        "LATE_RESPONSES",
+        "OMITTED_CLAIMS",
+        "GAP_WIDE"
+      ]
+    },
+    "overdue_flagged": [
+      22
+    ],
+    "colluding_loan": {
+      "tag": "L-F8",
+      "ref": "APX/LN/2026/0101",
+      "member": 37,
+      "booked": "4800000000",
+      "recognised": true
+    },
+    "proposals": {
+      "5": [
+        {
+          "action": "dispute",
+          "ref": "APX/LN/2024/0158",
+          "claimed": "2500000000",
+          "reason": "BALANCE_WRONG"
+        }
+      ],
+      "14": [
+        {
+          "action": "dispute",
+          "ref": "APX/DEP/0014-1",
+          "claimed": "11606900000",
+          "reason": "BALANCE_WRONG"
+        }
+      ],
+      "19": [
+        {
+          "action": "dispute",
+          "ref": "APX/LN/2025/0044",
+          "claimed": "1500000000",
+          "reason": "BALANCE_WRONG"
+        }
+      ],
+      "33": [
+        {
+          "action": "claim-omitted",
+          "claimed": "1200000000"
+        }
+      ]
+    },
+    "concentration_flagged": [
+      {
+        "member": 37,
+        "rules": [
+          "i",
+          "iii"
+        ]
+      }
+    ]
+  },
+  "period_2": {
+    "as_of": "2026-09-30",
+    "stale_flag": true,
+    "member_22_overdue_streak": 2,
+    "report": {
+      "period": 2,
+      "liabilities": "101628900000",
+      "cash": "29877490510",
+      "recognised_loans": "6986000000",
+      "booked_loans": "49716000000",
+      "unconfirmed_loans": "42730000000",
+      "coverage_bps": "3627",
+      "booked_coverage_bps": "7831",
+      "unresponded": 10,
+      "disputed": 0,
+      "late": 0,
+      "omitted": 0,
+      "flags": 67
+    }
+  }
+}

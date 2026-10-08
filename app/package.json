@@ -1,0 +1,28 @@
+{
+  "name": "apex-confirm",
+  "version": "0.1.0",
+  "description": "apex CLI: Merkle sum tree builder, member packs, offline register model, coverage reports and static pages for the Apex Confirm register on Stellar",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "bin": {
+    "apex": "./dist/src/cli.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test \"dist/test/**/*.test.js\"",
+    "seed": "tsc -p tsconfig.json && node dist/src/seed/generate.js",
+    "simulate": "node dist/src/cli.js simulate",
+    "apex": "node dist/src/cli.js"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^17.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "note": "Shared Merkle sum tree vector. Leaf, node and root encodings per docs/LEAF-FORMAT.md.",
+  "period": 1,
+  "leaf_count": 1,
+  "depth": 1,
+  "leaves": [
+    {
+      "period": 1,
+      "index": 0,
+      "cp": 1,
+      "kind": 1,
+      "line_ref": "2e6df3e7b7dd20df2ecb91254a58807b0e15aa86882d87d61362f31195213ee1",
+      "balance": "1200000000",
+      "arrears_days": 0,
+      "salt": "3205798953d733371473fc13d4bf789c36b37f4764da7d43fbdc5f6023bdc7e1",
+      "ref": "APX/DEP/0001-1",
+      "leaf_hash": "3dec558dd2cfc4d0405058964259939891a52740ab68071148dc607a7046532c",
+      "node": {
+        "hash": "3dec558dd2cfc4d0405058964259939891a52740ab68071148dc607a7046532c",
+        "dep": "1200000000",
+        "loan": "0"
+      }
+    }
+  ],
+  "padding": [
+    {
+      "index": 1,
+      "node": {
+        "hash": "2da037dc7496771f6bb247366f94bf88b6e27e0dfa2b5edae24353d844c9ed4d",
+        "dep": "0",
+        "loan": "0"
+      }
+    }
+  ],
+  "levels": [
+    [
+      {
+        "hash": "3dec558dd2cfc4d0405058964259939891a52740ab68071148dc607a7046532c",
+        "dep": "1200000000",
+        "loan": "0"
+      },
+      {
+        "hash": "2da037dc7496771f6bb247366f94bf88b6e27e0dfa2b5edae24353d844c9ed4d",
+        "dep": "0",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "f7172c75cb00cabc4ac0840a208362e3d50b567588cc09777fff2908759d0ead",
+        "dep": "1200000000",
+        "loan": "0"
+      }
+    ]
+  ],
+  "root": {
+    "hash": "f7172c75cb00cabc4ac0840a208362e3d50b567588cc09777fff2908759d0ead",
+    "dep": "1200000000",
+    "loan": "0"
+  },
+  "proofs": [
+    [
+      {
+        "hash": "2da037dc7496771f6bb247366f94bf88b6e27e0dfa2b5edae24353d844c9ed4d",
+        "dep": "0",
+        "loan": "0"
+      }
+    ]
+  ]
+}

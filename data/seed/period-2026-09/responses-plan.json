@@ -1,0 +1,221 @@
+{
+  "period": 2,
+  "as_of": "2026-09-30",
+  "open_at": "2026-10-01T07:00:00Z",
+  "note": "the apex opens the period but posts no root for 50 days; days below are counted from open_at",
+  "custodian": {
+    "day": 3,
+    "hour": 11
+  },
+  "watch_checks": [
+    {
+      "day": 30,
+      "expect_stale": false
+    },
+    {
+      "day": 46,
+      "expect_stale": true
+    }
+  ],
+  "post_day": 50,
+  "members_confirm_all": [
+    {
+      "no": 1,
+      "day": 54,
+      "hour": 12
+    },
+    {
+      "no": 2,
+      "day": 55,
+      "hour": 12
+    },
+    {
+      "no": 3,
+      "day": 51,
+      "hour": 10
+    },
+    {
+      "no": 4,
+      "day": 51,
+      "hour": 13
+    },
+    {
+      "no": 5,
+      "day": 53,
+      "hour": 17
+    },
+    {
+      "no": 6,
+      "day": 51,
+      "hour": 10
+    },
+    {
+      "no": 7,
+      "day": 55,
+      "hour": 9
+    },
+    {
+      "no": 8,
+      "day": 52,
+      "hour": 16
+    },
+    {
+      "no": 9,
+      "day": 53,
+      "hour": 9
+    },
+    {
+      "no": 10,
+      "day": 55,
+      "hour": 9
+    },
+    {
+      "no": 11,
+      "day": 55,
+      "hour": 13
+    },
+    {
+      "no": 12,
+      "day": 55,
+      "hour": 13
+    },
+    {
+      "no": 13,
+      "day": 54,
+      "hour": 15
+    },
+    {
+      "no": 14,
+      "day": 51,
+      "hour": 13
+    },
+    {
+      "no": 15,
+      "day": 52,
+      "hour": 16
+    },
+    {
+      "no": 16,
+      "day": 51,
+      "hour": 15
+    },
+    {
+      "no": 17,
+      "day": 55,
+      "hour": 13
+    },
+    {
+      "no": 18,
+      "day": 52,
+      "hour": 16
+    },
+    {
+      "no": 19,
+      "day": 51,
+      "hour": 15
+    },
+    {
+      "no": 20,
+      "day": 54,
+      "hour": 10
+    },
+    {
+      "no": 21,
+      "day": 53,
+      "hour": 10
+    },
+    {
+      "no": 23,
+      "day": 51,
+      "hour": 13
+    },
+    {
+      "no": 24,
+      "day": 53,
+      "hour": 12
+    },
+    {
+      "no": 25,
+      "day": 55,
+      "hour": 17
+    },
+    {
+      "no": 26,
+      "day": 55,
+      "hour": 11
+    },
+    {
+      "no": 27,
+      "day": 54,
+      "hour": 14
+    },
+    {
+      "no": 28,
+      "day": 51,
+      "hour": 10
+    },
+    {
+      "no": 29,
+      "day": 52,
+      "hour": 14
+    },
+    {
+      "no": 30,
+      "day": 53,
+      "hour": 16
+    },
+    {
+      "no": 31,
+      "day": 52,
+      "hour": 16
+    },
+    {
+      "no": 32,
+      "day": 55,
+      "hour": 11
+    },
+    {
+      "no": 33,
+      "day": 52,
+      "hour": 9
+    },
+    {
+      "no": 34,
+      "day": 55,
+      "hour": 12
+    },
+    {
+      "no": 35,
+      "day": 52,
+      "hour": 14
+    },
+    {
+      "no": 36,
+      "day": 51,
+      "hour": 10
+    },
+    {
+      "no": 37,
+      "day": 51,
+      "hour": 15
+    },
+    {
+      "no": 39,
+      "day": 52,
+      "hour": 10
+    },
+    {
+      "no": 40,
+      "day": 52,
+      "hour": 12
+    }
+  ],
+  "never": [
+    22
+  ],
+  "inactive": [
+    38
+  ],
+  "watch_day": 61,
+  "close_day": 61
+}

@@ -1,0 +1,7 @@
+{
+  "note": "Thresholds are team assumptions, not calibrated. Output is a pattern for supervisory follow-up, not evidence.",
+  "loan_to_deposit_multiple": 3,
+  "single_loan_share_bps": 500,
+  "recent_days": 30,
+  "recent_loan_share_bps": 100
+}

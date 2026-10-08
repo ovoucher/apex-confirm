@@ -1,0 +1,10 @@
+target/
+app/node_modules/
+app/dist/
+var/
+*.wasm
+!contracts/**/test_snapshots/**
+.env
+.env.testnet
+# The regulator page carries the off-chain line mapping. Never publish or commit it.
+web/regulator/

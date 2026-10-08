@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-12-01T09:00:00Z",
+  "apex_stale_since": "2026-11-16T09:00:00Z",
+  "periods": [
+    {
+      "period": 1,
+      "as_of": "2026-08-31",
+      "state": "Closed",
+      "supersedes": 0,
+      "coverage_bps": "7807",
+      "booked_coverage_bps": "10251",
+      "gap_bps": "2444",
+      "flags": [
+        "BELOW_ALERT",
+        "UNCONFIRMED_LOANS",
+        "DISPUTES",
+        "LATE_RESPONSES",
+        "OMITTED_CLAIMS",
+        "GAP_WIDE"
+      ],
+      "lines": 159,
+      "unresponded": 10,
+      "disputed": 3,
+      "late": 8,
+      "omitted": 1,
+      "custodian_attested_at": [
+        "2026-09-04T10:00:00Z"
+      ],
+      "closed_at": "2026-09-15T10:00:00Z"
+    },
+    {
+      "period": 2,
+      "as_of": "2026-09-30",
+      "state": "Closed",
+      "supersedes": 0,
+      "coverage_bps": "3627",
+      "booked_coverage_bps": "7831",
+      "gap_bps": "4204",
+      "flags": [
+        "BELOW_ALERT",
+        "UNCONFIRMED_LOANS",
+        "GAP_WIDE"
+      ],
+      "lines": 56,
+      "unresponded": 10,
+      "disputed": 0,
+      "late": 0,
+      "omitted": 0,
+      "custodian_attested_at": [
+        "2026-10-04T11:00:00Z"
+      ],
+      "closed_at": "2026-12-01T09:00:00Z"
+    }
+  ]
+}

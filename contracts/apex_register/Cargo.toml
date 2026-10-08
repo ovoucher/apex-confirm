@@ -1,0 +1,20 @@
+[package]
+name = "apex_register"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Per-period counterparty-confirmation register for a SACCO apex body: Merkle sum tree roots, board confirmations and disputes, custodian cash attestations, coverage reports"
+
+[lib]
+crate-type = ["cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+board_account = { path = "../board_account", features = ["testutils"] }
+ed25519-dalek = { version = "2" }
+serde_json = "1"

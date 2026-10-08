@@ -1,0 +1,296 @@
+{
+  "note": "Shared Merkle sum tree vector. Leaf, node and root encodings per docs/LEAF-FORMAT.md.",
+  "period": 7,
+  "leaf_count": 5,
+  "depth": 3,
+  "leaves": [
+    {
+      "period": 7,
+      "index": 0,
+      "cp": 3,
+      "kind": 1,
+      "line_ref": "6df8f99383ccfc2f5d4264820a6706eaf133df5a2ba322c2e5de69fdf3074adb",
+      "balance": "6125000000",
+      "arrears_days": 0,
+      "salt": "79b88717b7d828c0762c06bbcf69fe58135d156fd24e004428bc36f397cf0dca",
+      "ref": "APX/DEP/0003-1",
+      "leaf_hash": "7332b95637304fb398a51b135175c87ce63d7570d574fb5552b3dadb1158c449",
+      "node": {
+        "hash": "7332b95637304fb398a51b135175c87ce63d7570d574fb5552b3dadb1158c449",
+        "dep": "6125000000",
+        "loan": "0"
+      }
+    },
+    {
+      "period": 7,
+      "index": 1,
+      "cp": 3,
+      "kind": 2,
+      "line_ref": "7a79b416a278d5907202ad8f0bccf6c16900cc4a95769d7ba94ef507c2bfa1b8",
+      "balance": "1840000050",
+      "arrears_days": 0,
+      "salt": "ffbbe314610e2eedd9a48bd1aa387d939566a1b1f8359e5d0fcd3cceee314cb7",
+      "ref": "APX/LN/2024/0611",
+      "leaf_hash": "38d90f3c462c7c4f4aaee4c9eefdd267163d3e61149de3a5aa40b2d1796a821d",
+      "node": {
+        "hash": "38d90f3c462c7c4f4aaee4c9eefdd267163d3e61149de3a5aa40b2d1796a821d",
+        "dep": "0",
+        "loan": "1840000050"
+      }
+    },
+    {
+      "period": 7,
+      "index": 2,
+      "cp": 12,
+      "kind": 2,
+      "line_ref": "988893380b0dc9461e063614ca564009a85ec14401a8648223c399f25afcbab6",
+      "balance": "999000000",
+      "arrears_days": 47,
+      "salt": "dd6744d94cb221b9868f74d1f6b9699db7e3fbfeaec53db14740fa3db8573f8d",
+      "ref": "APX/LN/2025/0640",
+      "leaf_hash": "e67ba322b8503b9079d9ded21400745cdda321b190fc38363d7a30bdcc6b796d",
+      "node": {
+        "hash": "e67ba322b8503b9079d9ded21400745cdda321b190fc38363d7a30bdcc6b796d",
+        "dep": "0",
+        "loan": "999000000"
+      }
+    },
+    {
+      "period": 7,
+      "index": 3,
+      "cp": 901,
+      "kind": 2,
+      "line_ref": "8404df5b7ebc986e6694654d53bd1b48ae0709492cfaa2602b623ae17967a15a",
+      "balance": "10000000000",
+      "arrears_days": 0,
+      "salt": "3f60808b95fc08f511d7412d23b0ec1a67e55268ce8473ff1c7a8a15a6710dcf",
+      "ref": "APX/LN/2024/0031",
+      "leaf_hash": "358647d5409fbd99f246a7f4f4d139c6fa7e514d9c269776ed3fadb7b0911d1a",
+      "node": {
+        "hash": "358647d5409fbd99f246a7f4f4d139c6fa7e514d9c269776ed3fadb7b0911d1a",
+        "dep": "0",
+        "loan": "10000000000"
+      }
+    },
+    {
+      "period": 7,
+      "index": 4,
+      "cp": 12,
+      "kind": 1,
+      "line_ref": "d199200b80b77c56222db6950eb8e5619243d57b571484708e60848387471eb2",
+      "balance": "1",
+      "arrears_days": 0,
+      "salt": "bcd366c427b09e952409e7f34ec1917900d7cf2f39718be1abe13fe877d3013c",
+      "ref": "APX/DEP/0012-1",
+      "leaf_hash": "b4b936271cc857f8a2b85cee71c02394fdd8b70d33e0c8a84fe328193fb6d96f",
+      "node": {
+        "hash": "b4b936271cc857f8a2b85cee71c02394fdd8b70d33e0c8a84fe328193fb6d96f",
+        "dep": "1",
+        "loan": "0"
+      }
+    }
+  ],
+  "padding": [
+    {
+      "index": 5,
+      "node": {
+        "hash": "fa19245e2273e07185ed40f9e225aec0038c904fbcc808439c24676cc4be3d2e",
+        "dep": "0",
+        "loan": "0"
+      }
+    },
+    {
+      "index": 6,
+      "node": {
+        "hash": "cbac0d055c26f0712b1d08ae248e94d0407915126188511d031993f7d90f14ba",
+        "dep": "0",
+        "loan": "0"
+      }
+    },
+    {
+      "index": 7,
+      "node": {
+        "hash": "87d8b5cde466acd362cba8d303614021eeddd130bdcb91f51abd3393201f6d7b",
+        "dep": "0",
+        "loan": "0"
+      }
+    }
+  ],
+  "levels": [
+    [
+      {
+        "hash": "7332b95637304fb398a51b135175c87ce63d7570d574fb5552b3dadb1158c449",
+        "dep": "6125000000",
+        "loan": "0"
+      },
+      {
+        "hash": "38d90f3c462c7c4f4aaee4c9eefdd267163d3e61149de3a5aa40b2d1796a821d",
+        "dep": "0",
+        "loan": "1840000050"
+      },
+      {
+        "hash": "e67ba322b8503b9079d9ded21400745cdda321b190fc38363d7a30bdcc6b796d",
+        "dep": "0",
+        "loan": "999000000"
+      },
+      {
+        "hash": "358647d5409fbd99f246a7f4f4d139c6fa7e514d9c269776ed3fadb7b0911d1a",
+        "dep": "0",
+        "loan": "10000000000"
+      },
+      {
+        "hash": "b4b936271cc857f8a2b85cee71c02394fdd8b70d33e0c8a84fe328193fb6d96f",
+        "dep": "1",
+        "loan": "0"
+      },
+      {
+        "hash": "fa19245e2273e07185ed40f9e225aec0038c904fbcc808439c24676cc4be3d2e",
+        "dep": "0",
+        "loan": "0"
+      },
+      {
+        "hash": "cbac0d055c26f0712b1d08ae248e94d0407915126188511d031993f7d90f14ba",
+        "dep": "0",
+        "loan": "0"
+      },
+      {
+        "hash": "87d8b5cde466acd362cba8d303614021eeddd130bdcb91f51abd3393201f6d7b",
+        "dep": "0",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "3aafea8c08d4b91be18508e6b17f1af95791fd142ad4b67f4ab55719abbcaafb",
+        "dep": "6125000000",
+        "loan": "1840000050"
+      },
+      {
+        "hash": "ffd3365357634e3d9aa95216792cb012872e17ba545adc21fdd40c07e23a1b76",
+        "dep": "0",
+        "loan": "10999000000"
+      },
+      {
+        "hash": "196e6291112858f24cee2c679b505447b7a46673e02292eea494b94cc03dcd95",
+        "dep": "1",
+        "loan": "0"
+      },
+      {
+        "hash": "cf445f0c464dbf114e85500560170da0b4d571eb280adfbd63d6f1f2c6bcdf1a",
+        "dep": "0",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "0952f037265d907fad7627a842408aedd57f2e37d7adc6d6ff30069be2de3e01",
+        "dep": "6125000000",
+        "loan": "12839000050"
+      },
+      {
+        "hash": "cab7eae7ecd61c0a64982daf0dbc8b251c7b54898b23e2428c746138ef8a6d8e",
+        "dep": "1",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "fa07b093a6529dd3637e38b0a1b25b75774e4b31751608d4ecbe6b9f44ff075c",
+        "dep": "6125000001",
+        "loan": "12839000050"
+      }
+    ]
+  ],
+  "root": {
+    "hash": "fa07b093a6529dd3637e38b0a1b25b75774e4b31751608d4ecbe6b9f44ff075c",
+    "dep": "6125000001",
+    "loan": "12839000050"
+  },
+  "proofs": [
+    [
+      {
+        "hash": "38d90f3c462c7c4f4aaee4c9eefdd267163d3e61149de3a5aa40b2d1796a821d",
+        "dep": "0",
+        "loan": "1840000050"
+      },
+      {
+        "hash": "ffd3365357634e3d9aa95216792cb012872e17ba545adc21fdd40c07e23a1b76",
+        "dep": "0",
+        "loan": "10999000000"
+      },
+      {
+        "hash": "cab7eae7ecd61c0a64982daf0dbc8b251c7b54898b23e2428c746138ef8a6d8e",
+        "dep": "1",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "7332b95637304fb398a51b135175c87ce63d7570d574fb5552b3dadb1158c449",
+        "dep": "6125000000",
+        "loan": "0"
+      },
+      {
+        "hash": "ffd3365357634e3d9aa95216792cb012872e17ba545adc21fdd40c07e23a1b76",
+        "dep": "0",
+        "loan": "10999000000"
+      },
+      {
+        "hash": "cab7eae7ecd61c0a64982daf0dbc8b251c7b54898b23e2428c746138ef8a6d8e",
+        "dep": "1",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "358647d5409fbd99f246a7f4f4d139c6fa7e514d9c269776ed3fadb7b0911d1a",
+        "dep": "0",
+        "loan": "10000000000"
+      },
+      {
+        "hash": "3aafea8c08d4b91be18508e6b17f1af95791fd142ad4b67f4ab55719abbcaafb",
+        "dep": "6125000000",
+        "loan": "1840000050"
+      },
+      {
+        "hash": "cab7eae7ecd61c0a64982daf0dbc8b251c7b54898b23e2428c746138ef8a6d8e",
+        "dep": "1",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "e67ba322b8503b9079d9ded21400745cdda321b190fc38363d7a30bdcc6b796d",
+        "dep": "0",
+        "loan": "999000000"
+      },
+      {
+        "hash": "3aafea8c08d4b91be18508e6b17f1af95791fd142ad4b67f4ab55719abbcaafb",
+        "dep": "6125000000",
+        "loan": "1840000050"
+      },
+      {
+        "hash": "cab7eae7ecd61c0a64982daf0dbc8b251c7b54898b23e2428c746138ef8a6d8e",
+        "dep": "1",
+        "loan": "0"
+      }
+    ],
+    [
+      {
+        "hash": "fa19245e2273e07185ed40f9e225aec0038c904fbcc808439c24676cc4be3d2e",
+        "dep": "0",
+        "loan": "0"
+      },
+      {
+        "hash": "cf445f0c464dbf114e85500560170da0b4d571eb280adfbd63d6f1f2c6bcdf1a",
+        "dep": "0",
+        "loan": "0"
+      },
+      {
+        "hash": "0952f037265d907fad7627a842408aedd57f2e37d7adc6d6ff30069be2de3e01",
+        "dep": "6125000000",
+        "loan": "12839000050"
+      }
+    ]
+  ]
+}

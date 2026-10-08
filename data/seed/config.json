@@ -1,0 +1,10 @@
+{
+  "apex_name": "SIM APEX UNION (simulated)",
+  "currency": "KES",
+  "decimals": 2,
+  "confirm_window_secs": 864000,
+  "attest_window_secs": 432000,
+  "max_period_gap_secs": 3888000,
+  "performing_max_days": 90,
+  "alert_bps": 10000
+}
