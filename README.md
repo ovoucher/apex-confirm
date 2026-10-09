@@ -99,6 +99,11 @@ ARCHITECTURE.md  VALIDATION.md  DEMO.md  .env.example
 
 **functional locally**: both contracts are executed in the Soroban host by `cargo test` (unit,
 negative, auth, a real two-signature custom-account path, a 200-case property test and the seeded
-scenario), the wasm builds, and the offline TypeScript suite passes. Deployment scripts are
-**testnet-ready** but were **not executed**: this environment could not reach Stellar testnet.
-No users, no deployment, no measurements.
+scenario), the wasm builds, and the offline TypeScript suite passes. 
+
+### Testnet Deployment
+The smart contracts are currently deployed on the Stellar Testnet at the following addresses:
+- **apex_register**: `CBZHXXMUDF7O7OMKMAXEWKC533P3PBV5FELNYB2KOLVJ7ZQJ74HSWE5H`
+- **member 1 board_account**: `CBRWTIMNVDWHI62GEZUN3NKWJEDFLXXSFEYKXLHDGOHFN7FPNDW4YZMH`
+- **member 2 board_account**: `CCUDW6TGEEREJJYU2DCLPM26BZBYLQJOSFVYSF5DWZGQWW3ODLZXBP3I`
+- **member 3 board_account**: `CC2ACKFW73NZMUDAMRRBUOAJGLIPAZD74ZTSJ7PC7YAJ5F2ULE3JFED3`

@@ -52,7 +52,7 @@ jq -n --argjson b "$BOARDS" '{warning:"TESTNET KEYS. Never commit.", boards:$b}'
 
 cat > "$ROOT/.env.testnet" <<ENV
 STELLAR_RPC_URL=https://soroban-testnet.stellar.org
-STELLAR_NETWORK_PASSPHRASE=Test SDF Network ; September 2015
+STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
 APEX_REGISTER_CONTRACT_ID=$REGISTER
 REGISTRAR_SECRET=$(secret apex-registrar)
 APEX_SECRET=$(secret apex-apex)
