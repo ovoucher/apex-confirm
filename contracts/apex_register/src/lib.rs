@@ -700,6 +700,18 @@ impl ApexRegister {
         Ok(())
     }
 
+    pub fn get_config(env: Env) -> Result<Config, Error> {
+        config(&env)
+    }
+
+    pub fn get_member(env: Env, no: u32) -> Result<Member, Error> {
+        load_member(&env, no)
+    }
+
+    pub fn get_tally(env: Env, period: u32) -> Result<Tally, Error> {
+        Ok(load_tally(&env, period))
+    }
+
     pub fn register_member(env: Env, no: u32, board: Address, licence_hash: BytesN<32>) -> Result<(), Error> {
         let cfg = config(&env)?;
         cfg.registrar.require_auth();
