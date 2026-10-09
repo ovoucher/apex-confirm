@@ -93,6 +93,7 @@ impl BoardAccount {
         }
         validate(&signers, threshold)?;
         store(&env, &signers, threshold);
+        env.events().publish((soroban_sdk::symbol_short!("init"),), threshold);
         Ok(())
     }
 
