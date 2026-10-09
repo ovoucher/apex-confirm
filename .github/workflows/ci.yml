@@ -1,0 +1,28 @@
+name: Rust and Node CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: wasm32-unknown-unknown
+
+    - name: Run Cargo Test
+      run: cargo test --verbose
+
+    - name: Run Cargo Fmt
+      run: cargo fmt --all -- --check
+
+    - name: Run Cargo Clippy
+      run: cargo clippy --all-targets --all-features -- -D warnings
