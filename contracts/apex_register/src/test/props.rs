@@ -89,7 +89,11 @@ fn property_random_trees_and_response_sequences() {
         for _ in 0..n {
             let cp = rng.range(1, 15) as u32;
             let bal = (rng.next() % 100_000_000_000_000) as i128; // up to 10^14 cents
-            let arrears = if rng.below(4) == 0 { rng.range(0, 200) as u32 } else { 0 };
+            let arrears = if rng.below(4) == 0 {
+                rng.range(0, 200) as u32
+            } else {
+                0
+            };
             if rng.below(2) == 0 {
                 lines.push(dep(cp, bal));
             } else {
@@ -147,12 +151,29 @@ fn property_random_trees_and_response_sequences() {
             } else if op < 65 {
                 // dispute
                 let reason = rng.range(1, 4) as u32;
-                let mut claimed = if leaf.balance > 0 { (rng.next() as i128) % (leaf.balance * 2 + 1) } else { rng.range(0, 5) as i128 };
+                let mut claimed = if leaf.balance > 0 {
+                    (rng.next() as i128) % (leaf.balance * 2 + 1)
+                } else {
+                    rng.range(0, 5) as i128
+                };
                 if reason == REASON_NOT_OURS {
                     claimed = 0;
                 }
-                let carr = if rng.below(3) == 0 { rng.range(0, 200) as u32 } else { leaf.arrears_days };
-                let r = w.c.try_dispute(&p, &leaf.cp, &leaf, &t.proof(i), &claimed, &carr, &reason, &zero32(e));
+                let carr = if rng.below(3) == 0 {
+                    rng.range(0, 200) as u32
+                } else {
+                    leaf.arrears_days
+                };
+                let r = w.c.try_dispute(
+                    &p,
+                    &leaf.cp,
+                    &leaf,
+                    &t.proof(i),
+                    &claimed,
+                    &carr,
+                    &reason,
+                    &zero32(e),
+                );
                 if closed {
                     assert_eq!(r, Err(Ok(Error::BadState)));
                 } else if !can_respond(leaf.cp) {
@@ -181,7 +202,10 @@ fn property_random_trees_and_response_sequences() {
                 // wrong member for this leaf
                 let other = rng.range(1, MEMBERS as u64) as u32;
                 if other != leaf.cp && can_respond(other) && !closed {
-                    assert_eq!(w.c.try_confirm(&p, &other, &leaf, &t.proof(i)), Err(Ok(Error::NotYourLeaf)));
+                    assert_eq!(
+                        w.c.try_confirm(&p, &other, &leaf, &t.proof(i)),
+                        Err(Ok(Error::NotYourLeaf))
+                    );
                 }
             } else if op < 78 {
                 // omitted claim
@@ -202,7 +226,8 @@ fn property_random_trees_and_response_sequences() {
                 }
             } else if op < 83 {
                 // attestation
-                let r = w.c.try_attest_cash(&p, &w.custodian, &cash, &AS_OF_AUG, &zero32(e));
+                let r =
+                    w.c.try_attest_cash(&p, &w.custodian, &cash, &AS_OF_AUG, &zero32(e));
                 if closed {
                     assert_eq!(r, Err(Ok(Error::BadState)));
                 } else if attested {
@@ -237,7 +262,9 @@ fn property_random_trees_and_response_sequences() {
             if !attested {
                 w.c.attest_cash(&p, &w.custodian, &cash, &AS_OF_AUG, &zero32(e));
             }
-            w.env.ledger().set_timestamp(w.now().max(T_OPEN + CONFIRM_WINDOW));
+            w.env
+                .ledger()
+                .set_timestamp(w.now().max(T_OPEN + CONFIRM_WINDOW));
             frozen = Some(w.c.close_period(&p));
         }
         ex.cash = cash;
@@ -288,12 +315,22 @@ fn property_random_trees_and_response_sequences() {
                 j = (i + 1) % n as u32;
             }
             let proof = t.proof(i);
-            let moved = Leaf { index: j, ..t.leaf(i) };
-            assert_ne!(merkle::root_from_proof(e, merkle::leaf_node(e, &moved), j, &proof).ok(), Some(root.clone()));
-            assert_ne!(merkle::root_from_proof(e, merkle::leaf_node(e, &t.leaf(i)), j, &proof).ok(), Some(root.clone()));
+            let moved = Leaf {
+                index: j,
+                ..t.leaf(i)
+            };
+            assert_ne!(
+                merkle::root_from_proof(e, merkle::leaf_node(e, &moved), j, &proof).ok(),
+                Some(root.clone())
+            );
+            assert_ne!(
+                merkle::root_from_proof(e, merkle::leaf_node(e, &t.leaf(i)), j, &proof).ok(),
+                Some(root.clone())
+            );
         }
         // the report equals the pure computation over the stored tally
-        let recomputed = compute_report(p, ALERT_BPS, &root, n as u32, &tally, rep.closed_at).unwrap();
+        let recomputed =
+            compute_report(p, ALERT_BPS, &root, n as u32, &tally, rep.closed_at).unwrap();
         assert_eq!(rep, recomputed);
         // no report changes once written
         let i = rng.below(n as u64) as u32;
@@ -311,11 +348,43 @@ fn property_random_trees_and_response_sequences() {
 
     // Edge cases for the TypeScript side: zero divisors and exact alert boundary.
     let edge = [
-        (Node { hash: zero32(&Env::default()), dep: 0, loan: 500 }, Tally { cash: 10, ..Tally::default() }),
-        (Node { hash: zero32(&Env::default()), dep: 1_000, loan: 0 }, Tally { cash: 1_000, ..Tally::default() }),
         (
-            Node { hash: zero32(&Env::default()), dep: 1_000, loan: 900 },
-            Tally { cash: 100, confirmed_loans: 800, recognised_loans: 800, responded: 3, late: 1, cash_late: true, ..Tally::default() },
+            Node {
+                hash: zero32(&Env::default()),
+                dep: 0,
+                loan: 500,
+            },
+            Tally {
+                cash: 10,
+                ..Tally::default()
+            },
+        ),
+        (
+            Node {
+                hash: zero32(&Env::default()),
+                dep: 1_000,
+                loan: 0,
+            },
+            Tally {
+                cash: 1_000,
+                ..Tally::default()
+            },
+        ),
+        (
+            Node {
+                hash: zero32(&Env::default()),
+                dep: 1_000,
+                loan: 900,
+            },
+            Tally {
+                cash: 100,
+                confirmed_loans: 800,
+                recognised_loans: 800,
+                responded: 3,
+                late: 1,
+                cash_late: true,
+                ..Tally::default()
+            },
         ),
     ];
     for (k, (root, tally)) in edge.iter().enumerate() {

@@ -21,7 +21,9 @@ pub const ALERT_BPS: u32 = 10_000;
 pub const KES: i128 = 100;
 
 pub fn h(env: &Env, s: &str) -> BytesN<32> {
-    env.crypto().sha256(&Bytes::from_slice(env, s.as_bytes())).into()
+    env.crypto()
+        .sha256(&Bytes::from_slice(env, s.as_bytes()))
+        .into()
 }
 
 pub fn zero32(env: &Env) -> BytesN<32> {
@@ -69,7 +71,15 @@ impl World {
             boards.push(b);
         }
         c.set_custodian(&custodian, &true);
-        World { env, id, c, registrar, apex, custodian, boards }
+        World {
+            env,
+            id,
+            c,
+            registrar,
+            apex,
+            custodian,
+            boards,
+        }
     }
 
     pub fn at(&self, t: u64) {
@@ -84,8 +94,15 @@ impl World {
     pub fn open_post(&self, tree: &Tree, cash: i128) -> u32 {
         self.at(T_OPEN);
         let p = self.c.open_period(&AS_OF_AUG, &0);
-        self.c.attest_cash(&p, &self.custodian, &cash, &AS_OF_AUG, &h(&self.env, "statement"));
-        self.c.post_root(&p, &tree.root(), &tree.leaf_count(), &h(&self.env, "file"));
+        self.c.attest_cash(
+            &p,
+            &self.custodian,
+            &cash,
+            &AS_OF_AUG,
+            &h(&self.env, "statement"),
+        );
+        self.c
+            .post_root(&p, &tree.root(), &tree.leaf_count(), &h(&self.env, "file"));
         p
     }
 
@@ -113,11 +130,21 @@ pub struct Line {
 }
 
 pub fn dep(cp: u32, balance: i128) -> Line {
-    Line { cp, kind: KIND_DEPOSIT, balance, arrears: 0 }
+    Line {
+        cp,
+        kind: KIND_DEPOSIT,
+        balance,
+        arrears: 0,
+    }
 }
 
 pub fn loan(cp: u32, balance: i128, arrears: u32) -> Line {
-    Line { cp, kind: KIND_LOAN, balance, arrears }
+    Line {
+        cp,
+        kind: KIND_LOAN,
+        balance,
+        arrears,
+    }
 }
 
 #[allow(dead_code)]
@@ -161,7 +188,12 @@ impl Tree {
                 .collect();
             levels.push(next);
         }
-        Tree { env: env.clone(), period, leaves, levels }
+        Tree {
+            env: env.clone(),
+            period,
+            leaves,
+            levels,
+        }
     }
 
     pub fn root(&self) -> Node {
@@ -192,7 +224,11 @@ impl Tree {
 
     /// Indexes of the lines booked to `cp`.
     pub fn lines_of(&self, cp: u32) -> std::vec::Vec<u32> {
-        self.leaves.iter().filter(|l| l.cp == cp).map(|l| l.index).collect()
+        self.leaves
+            .iter()
+            .filter(|l| l.cp == cp)
+            .map(|l| l.index)
+            .collect()
     }
 }
 
@@ -210,7 +246,9 @@ macro_rules! assert_err {
 // ------------------------------------------------------------------ JSON vector helpers
 
 pub fn vectors_dir() -> std::path::PathBuf {
-    std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("..").join("vectors")
+    std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("..")
+        .join("vectors")
 }
 
 pub fn load_vector(name: &str) -> serde_json::Value {
@@ -258,5 +296,9 @@ pub fn leaf_from_json(env: &Env, j: &serde_json::Value) -> Leaf {
 }
 
 pub fn node_from_json(env: &Env, j: &serde_json::Value) -> Node {
-    Node { hash: hex32(env, j["hash"].as_str().unwrap()), dep: js_i128(&j["dep"]), loan: js_i128(&j["loan"]) }
+    Node {
+        hash: hex32(env, j["hash"].as_str().unwrap()),
+        dep: js_i128(&j["dep"]),
+        loan: js_i128(&j["loan"]),
+    }
 }

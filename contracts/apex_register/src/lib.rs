@@ -450,7 +450,9 @@ fn is_custodian(env: &Env, a: &Address) -> bool {
 }
 
 fn is_board(env: &Env, a: &Address) -> bool {
-    env.storage().persistent().has(&DataKey::BoardIndex(a.clone()))
+    env.storage()
+        .persistent()
+        .has(&DataKey::BoardIndex(a.clone()))
 }
 
 fn custodian_list(env: &Env) -> Vec<Address> {
@@ -459,7 +461,11 @@ fn custodian_list(env: &Env) -> Vec<Address> {
 
 /// A member board may not be the registrar, the apex, a custodian or another member's board.
 fn check_board_free(env: &Env, cfg: &Config, board: &Address) -> Result<(), Error> {
-    if *board == cfg.apex || *board == cfg.registrar || is_board(env, board) || is_custodian(env, board) {
+    if *board == cfg.apex
+        || *board == cfg.registrar
+        || is_board(env, board)
+        || is_custodian(env, board)
+    {
         return Err(Error::RoleConflict);
     }
     Ok(())
@@ -507,7 +513,10 @@ pub fn compute_report(
         -1
     };
     let booked_coverage_bps = if root.dep > 0 {
-        add(t.cash, root.loan)?.checked_mul(BPS).ok_or(Error::Overflow)? / root.dep
+        add(t.cash, root.loan)?
+            .checked_mul(BPS)
+            .ok_or(Error::Overflow)?
+            / root.dep
     } else {
         -1
     };
@@ -532,7 +541,10 @@ pub fn compute_report(
     if t.omitted_count > 0 {
         flags |= FLAG_OMITTED_CLAIMS;
     }
-    if coverage_bps >= 0 && booked_coverage_bps >= 0 && booked_coverage_bps - coverage_bps >= GAP_WIDE_BPS {
+    if coverage_bps >= 0
+        && booked_coverage_bps >= 0
+        && booked_coverage_bps - coverage_bps >= GAP_WIDE_BPS
+    {
         flags |= FLAG_GAP_WIDE;
     }
     Ok(Report {
@@ -615,7 +627,15 @@ fn record(env: &Env, period: u32, t: &mut Tally, r: &Response) {
     put(env, &mk, &(n + 1));
 }
 
-fn do_confirm(env: &Env, cfg: &Config, period: &Period, t: &mut Tally, member_no: u32, leaf: &Leaf, proof: &Vec<Node>) -> Result<(), Error> {
+fn do_confirm(
+    env: &Env,
+    cfg: &Config,
+    period: &Period,
+    t: &mut Tally,
+    member_no: u32,
+    leaf: &Leaf,
+    proof: &Vec<Node>,
+) -> Result<(), Error> {
     check_line(env, period, member_no, leaf, proof)?;
     let now = env.ledger().timestamp();
     let late = now > period.confirm_by;
@@ -642,8 +662,15 @@ fn do_confirm(env: &Env, cfg: &Config, period: &Period, t: &mut Tally, member_no
         late,
     };
     record(env, period.id, t, &r);
-    ConfirmEvent { period: period.id, index: leaf.index, member_no, kind: leaf.kind, booked: leaf.balance, late }
-        .publish(env);
+    ConfirmEvent {
+        period: period.id,
+        index: leaf.index,
+        member_no,
+        kind: leaf.kind,
+        booked: leaf.balance,
+        late,
+    }
+    .publish(env);
     Ok(())
 }
 
@@ -717,7 +744,12 @@ impl ApexRegister {
         Ok(load_tally(&env, period))
     }
 
-    pub fn register_member(env: Env, no: u32, board: Address, licence_hash: BytesN<32>) -> Result<(), Error> {
+    pub fn register_member(
+        env: Env,
+        no: u32,
+        board: Address,
+        licence_hash: BytesN<32>,
+    ) -> Result<(), Error> {
         let cfg = config(&env)?;
         cfg.registrar.require_auth();
         if no == 0 || no > MAX_MEMBER_NO {
@@ -744,7 +776,12 @@ impl ApexRegister {
         if no > max_no {
             iset(&env, &DataKey::MaxMemberNo, &no);
         }
-        MemberEvent { no, board, active: true }.publish(&env);
+        MemberEvent {
+            no,
+            board,
+            active: true,
+        }
+        .publish(&env);
         Ok(())
     }
 
@@ -754,7 +791,12 @@ impl ApexRegister {
         let mut m = load_member(&env, no)?;
         m.active = active;
         put(&env, &DataKey::Member(no), &m);
-        MemberEvent { no, board: m.board, active }.publish(&env);
+        MemberEvent {
+            no,
+            board: m.board,
+            active,
+        }
+        .publish(&env);
         Ok(())
     }
 
@@ -763,11 +805,18 @@ impl ApexRegister {
         cfg.registrar.require_auth();
         let mut m = load_member(&env, no)?;
         check_board_free(&env, &cfg, &new_board)?;
-        env.storage().persistent().remove(&DataKey::BoardIndex(m.board.clone()));
+        env.storage()
+            .persistent()
+            .remove(&DataKey::BoardIndex(m.board.clone()));
         m.board = new_board.clone();
         put(&env, &DataKey::Member(no), &m);
         put(&env, &DataKey::BoardIndex(new_board.clone()), &no);
-        MemberEvent { no, board: new_board, active: m.active }.publish(&env);
+        MemberEvent {
+            no,
+            board: new_board,
+            active: m.active,
+        }
+        .publish(&env);
         Ok(())
     }
 
@@ -810,7 +859,10 @@ impl ApexRegister {
         let mut cfg = config(&env)?;
         cfg.registrar.require_auth();
         new_registrar.require_auth();
-        if new_registrar == cfg.apex || is_board(&env, &new_registrar) || is_custodian(&env, &new_registrar) {
+        if new_registrar == cfg.apex
+            || is_board(&env, &new_registrar)
+            || is_custodian(&env, &new_registrar)
+        {
             return Err(Error::RoleConflict);
         }
         cfg.registrar = new_registrar;
@@ -860,7 +912,11 @@ impl ApexRegister {
             as_of,
             opened_at: now,
             supersedes,
-            root: Node { hash: zero.clone(), dep: 0, loan: 0 },
+            root: Node {
+                hash: zero.clone(),
+                dep: 0,
+                loan: 0,
+            },
             leaf_count: 0,
             depth: 0,
             file_hash: zero,
@@ -874,13 +930,24 @@ impl ApexRegister {
         put(&env, &DataKey::Tally(id), &Tally::default());
         iset(&env, &DataKey::CurrentPeriod, &id);
         iset(&env, &DataKey::ApexStaleSince, &0u64);
-        OpenEvent { period: id, as_of, supersedes }.publish(&env);
+        OpenEvent {
+            period: id,
+            as_of,
+            supersedes,
+        }
+        .publish(&env);
         Ok(id)
     }
 
     /// Post the Merkle sum root. A root can never be replaced; a wrong book is corrected by
     /// closing this period and opening a superseding one.
-    pub fn post_root(env: Env, period: u32, root: Node, leaf_count: u32, file_hash: BytesN<32>) -> Result<(), Error> {
+    pub fn post_root(
+        env: Env,
+        period: u32,
+        root: Node,
+        leaf_count: u32,
+        file_hash: BytesN<32>,
+    ) -> Result<(), Error> {
         let cfg = config(&env)?;
         cfg.apex.require_auth();
         let mut p = load_period(&env, period)?;
@@ -903,13 +970,27 @@ impl ApexRegister {
         p.attest_by = now + cfg.attest_window_secs;
         p.state = PeriodState::Posted;
         put(&env, &DataKey::Period(period), &p);
-        PostEvent { period, root_hash: root.hash, dep: root.dep, loan: root.loan, leaf_count, file_hash }.publish(&env);
+        PostEvent {
+            period,
+            root_hash: root.hash,
+            dep: root.dep,
+            loan: root.loan,
+            leaf_count,
+            file_hash,
+        }
+        .publish(&env);
         Ok(())
     }
 
     // -------------------------------------------------------------- member boards
 
-    pub fn confirm(env: Env, period: u32, member_no: u32, leaf: Leaf, proof: Vec<Node>) -> Result<(), Error> {
+    pub fn confirm(
+        env: Env,
+        period: u32,
+        member_no: u32,
+        leaf: Leaf,
+        proof: Vec<Node>,
+    ) -> Result<(), Error> {
         let (cfg, p, _m) = responder(&env, period, member_no)?;
         let mut t = load_tally(&env, period);
         do_confirm(&env, &cfg, &p, &mut t, member_no, &leaf, &proof)?;
@@ -918,7 +999,12 @@ impl ApexRegister {
     }
 
     /// Confirm up to 16 lines under one board authorisation. All-or-nothing.
-    pub fn confirm_batch(env: Env, period: u32, member_no: u32, items: Vec<(Leaf, Vec<Node>)>) -> Result<(), Error> {
+    pub fn confirm_batch(
+        env: Env,
+        period: u32,
+        member_no: u32,
+        items: Vec<(Leaf, Vec<Node>)>,
+    ) -> Result<(), Error> {
         if items.len() > MAX_BATCH {
             return Err(Error::BatchTooLarge);
         }
@@ -958,7 +1044,11 @@ impl ApexRegister {
         let late = now > p.confirm_by;
         let mut t = load_tally(&env, period);
         if leaf.kind == KIND_LOAN {
-            let ack = if claimed < leaf.balance { claimed } else { leaf.balance };
+            let ack = if claimed < leaf.balance {
+                claimed
+            } else {
+                leaf.balance
+            };
             t.disputed_loans_booked = add(t.disputed_loans_booked, leaf.balance)?;
             t.disputed_loans_ack = add(t.disputed_loans_ack, ack)?;
             if claimed_arrears_days <= cfg.performing_max_days {
@@ -981,19 +1071,37 @@ impl ApexRegister {
             at: now,
             late,
         };
-        put(&env, &DataKey::DisputeAt(period, t.disputed_count), &leaf.index);
+        put(
+            &env,
+            &DataKey::DisputeAt(period, t.disputed_count),
+            &leaf.index,
+        );
         t.disputed_count += 1;
         record(&env, period, &mut t, &r);
         put(&env, &DataKey::Tally(period), &t);
-        DisputeEvent { period, index: leaf.index, member_no, kind: leaf.kind, booked: leaf.balance, claimed, reason }
-            .publish(&env);
+        DisputeEvent {
+            period,
+            index: leaf.index,
+            member_no,
+            kind: leaf.kind,
+            booked: leaf.balance,
+            claimed,
+            reason,
+        }
+        .publish(&env);
         Ok(())
     }
 
     /// A member that holds a deposit with the apex but received no line for it claims the
     /// amount. A claim of 0 means "we hold nothing and received no lines" and still counts
     /// as the member's response.
-    pub fn claim_omitted(env: Env, period: u32, member_no: u32, claimed_deposit: i128, evidence_hash: BytesN<32>) -> Result<(), Error> {
+    pub fn claim_omitted(
+        env: Env,
+        period: u32,
+        member_no: u32,
+        claimed_deposit: i128,
+        evidence_hash: BytesN<32>,
+    ) -> Result<(), Error> {
         let (_cfg, _p, _m) = responder(&env, period, member_no)?;
         let key = DataKey::Omitted(period, member_no);
         if env.storage().persistent().has(&key) {
@@ -1005,10 +1113,20 @@ impl ApexRegister {
         let mut t = load_tally(&env, period);
         t.deposit_uplift = add(t.deposit_uplift, claimed_deposit)?;
         t.omitted_count += 1;
-        let c = OmittedClaim { member_no, claimed_deposit, evidence_hash, at: env.ledger().timestamp() };
+        let c = OmittedClaim {
+            member_no,
+            claimed_deposit,
+            evidence_hash,
+            at: env.ledger().timestamp(),
+        };
         put(&env, &key, &c);
         put(&env, &DataKey::Tally(period), &t);
-        OmittedEvent { period, member_no, claimed_deposit }.publish(&env);
+        OmittedEvent {
+            period,
+            member_no,
+            claimed_deposit,
+        }
+        .publish(&env);
         Ok(())
     }
 
@@ -1046,9 +1164,26 @@ impl ApexRegister {
         t.cash = add(t.cash, balance)?;
         t.cash_count += 1;
         t.cash_late = t.cash_late || late;
-        put(&env, &key, &CashAttestation { custodian: custodian.clone(), balance, as_of, statement_hash, at: now, late });
+        put(
+            &env,
+            &key,
+            &CashAttestation {
+                custodian: custodian.clone(),
+                balance,
+                as_of,
+                statement_hash,
+                at: now,
+                late,
+            },
+        );
         put(&env, &DataKey::Tally(period), &t);
-        AttestEvent { period, custodian, balance, late }.publish(&env);
+        AttestEvent {
+            period,
+            custodian,
+            balance,
+            late,
+        }
+        .publish(&env);
         Ok(())
     }
 
@@ -1085,7 +1220,11 @@ impl ApexRegister {
         }
         .publish(&env);
         if r.flags & FLAG_BELOW_ALERT != 0 {
-            CoverageAlertEvent { period, coverage_bps: r.coverage_bps }.publish(&env);
+            CoverageAlertEvent {
+                period,
+                coverage_bps: r.coverage_bps,
+            }
+            .publish(&env);
         }
         Ok(r)
     }
@@ -1112,15 +1251,24 @@ impl ApexRegister {
         while cursor <= max_no && steps < max {
             if let Some(mut m) = get::<Member>(&env, &DataKey::Member(cursor)) {
                 if m.active && m.admitted_at <= p.posted_at {
-                    let responded = get::<u32>(&env, &DataKey::MemberResp(period, cursor)).unwrap_or(0) > 0
-                        || env.storage().persistent().has(&DataKey::Omitted(period, cursor));
+                    let responded =
+                        get::<u32>(&env, &DataKey::MemberResp(period, cursor)).unwrap_or(0) > 0
+                            || env
+                                .storage()
+                                .persistent()
+                                .has(&DataKey::Omitted(period, cursor));
                     if responded {
                         m.overdue_streak = 0;
                         m.last_response_period = period;
                     } else {
                         m.overdue_streak += 1;
                         flagged += 1;
-                        OverdueEvent { member_no: cursor, period, streak: m.overdue_streak }.publish(&env);
+                        OverdueEvent {
+                            member_no: cursor,
+                            period,
+                            streak: m.overdue_streak,
+                        }
+                        .publish(&env);
                     }
                     put(&env, &DataKey::Member(cursor), &m);
                 }
@@ -1221,7 +1369,12 @@ impl ApexRegister {
     }
 
     /// Unresponded line indexes from `from_index`, at most `limit` (≤ 512) of them.
-    pub fn unresponded(env: Env, period: u32, from_index: u32, limit: u32) -> Result<Vec<u32>, Error> {
+    pub fn unresponded(
+        env: Env,
+        period: u32,
+        from_index: u32,
+        limit: u32,
+    ) -> Result<Vec<u32>, Error> {
         if limit > MAX_UNRESPONDED_PAGE {
             return Err(Error::RangeTooLarge);
         }

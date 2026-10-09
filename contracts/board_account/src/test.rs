@@ -47,13 +47,27 @@ fn setup() -> Setup {
     let client = BoardAccountClient::new(&env, &addr);
     let keys = [officer(1), officer(2), officer(3)];
     client.init(
-        &vec![&env, pk(&env, &keys[0]), pk(&env, &keys[1]), pk(&env, &keys[2])],
+        &vec![
+            &env,
+            pk(&env, &keys[0]),
+            pk(&env, &keys[1]),
+            pk(&env, &keys[2]),
+        ],
         &2,
     );
-    Setup { env, addr, client, keys }
+    Setup {
+        env,
+        addr,
+        client,
+        keys,
+    }
 }
 
-fn check(s: &Setup, payload: &BytesN<32>, sigs: Vec<Sig>) -> Result<(), Result<AccError, soroban_sdk::InvokeError>> {
+fn check(
+    s: &Setup,
+    payload: &BytesN<32>,
+    sigs: Vec<Sig>,
+) -> Result<(), Result<AccError, soroban_sdk::InvokeError>> {
     s.env.try_invoke_contract_check_auth::<AccError>(
         &s.addr,
         payload,
@@ -66,7 +80,13 @@ fn check(s: &Setup, payload: &BytesN<32>, sigs: Vec<Sig>) -> Result<(), Result<A
 fn two_of_three_valid_signatures_pass() {
     let s = setup();
     let payload = BytesN::random(&s.env);
-    let sigs = sorted(&s.env, std::vec![sign(&s.env, &s.keys[0], &payload), sign(&s.env, &s.keys[2], &payload)]);
+    let sigs = sorted(
+        &s.env,
+        std::vec![
+            sign(&s.env, &s.keys[0], &payload),
+            sign(&s.env, &s.keys[2], &payload)
+        ],
+    );
     assert_eq!(check(&s, &payload, sigs), Ok(()));
     // All three also pass.
     let all = sorted(
@@ -85,8 +105,14 @@ fn one_valid_signature_is_not_enough() {
     let s = setup();
     let payload = BytesN::random(&s.env);
     let sigs = sorted(&s.env, std::vec![sign(&s.env, &s.keys[1], &payload)]);
-    assert_eq!(check(&s, &payload, sigs), Err(Ok(AccError::NotEnoughSigners)));
-    assert_eq!(check(&s, &payload, Vec::new(&s.env)), Err(Ok(AccError::NotEnoughSigners)));
+    assert_eq!(
+        check(&s, &payload, sigs),
+        Err(Ok(AccError::NotEnoughSigners))
+    );
+    assert_eq!(
+        check(&s, &payload, Vec::new(&s.env)),
+        Err(Ok(AccError::NotEnoughSigners))
+    );
 }
 
 #[test]
@@ -102,7 +128,13 @@ fn same_key_twice_is_rejected_as_not_sorted() {
 fn unsorted_order_is_rejected() {
     let s = setup();
     let payload = BytesN::random(&s.env);
-    let asc = sorted(&s.env, std::vec![sign(&s.env, &s.keys[0], &payload), sign(&s.env, &s.keys[1], &payload)]);
+    let asc = sorted(
+        &s.env,
+        std::vec![
+            sign(&s.env, &s.keys[0], &payload),
+            sign(&s.env, &s.keys[1], &payload)
+        ],
+    );
     let desc = vec![&s.env, asc.get(1).unwrap(), asc.get(0).unwrap()];
     assert_eq!(check(&s, &payload, desc), Err(Ok(AccError::NotSorted)));
 }
@@ -112,7 +144,13 @@ fn unknown_key_is_rejected() {
     let s = setup();
     let payload = BytesN::random(&s.env);
     let stranger = officer(9);
-    let sigs = sorted(&s.env, std::vec![sign(&s.env, &s.keys[0], &payload), sign(&s.env, &stranger, &payload)]);
+    let sigs = sorted(
+        &s.env,
+        std::vec![
+            sign(&s.env, &s.keys[0], &payload),
+            sign(&s.env, &stranger, &payload)
+        ],
+    );
     assert_eq!(check(&s, &payload, sigs), Err(Ok(AccError::UnknownSigner)));
 }
 
@@ -121,7 +159,13 @@ fn signature_over_a_different_payload_traps() {
     let s = setup();
     let payload = BytesN::random(&s.env);
     let other = BytesN::random(&s.env);
-    let sigs = sorted(&s.env, std::vec![sign(&s.env, &s.keys[0], &other), sign(&s.env, &s.keys[1], &other)]);
+    let sigs = sorted(
+        &s.env,
+        std::vec![
+            sign(&s.env, &s.keys[0], &other),
+            sign(&s.env, &s.keys[1], &other)
+        ],
+    );
     let r = check(&s, &payload, sigs);
     // ed25519_verify traps: the host reports an invocation failure, not a contract error.
     assert!(matches!(r, Err(Err(_))), "expected a trap, got {:?}", r);
@@ -132,13 +176,25 @@ fn init_twice_fails_and_bad_signer_sets_are_rejected() {
     let s = setup();
     let env = &s.env;
     let k = pk(env, &s.keys[0]);
-    assert_eq!(s.client.try_init(&vec![env, k.clone()], &1), Err(Ok(AccError::AlreadyInitialised)));
+    assert_eq!(
+        s.client.try_init(&vec![env, k.clone()], &1),
+        Err(Ok(AccError::AlreadyInitialised))
+    );
 
     let fresh = BoardAccountClient::new(env, &env.register(BoardAccount, ()));
     // threshold 0, threshold above signer count, duplicate keys, more than 5 keys
-    assert_eq!(fresh.try_init(&vec![env, k.clone()], &0), Err(Ok(AccError::BadSigners)));
-    assert_eq!(fresh.try_init(&vec![env, k.clone()], &2), Err(Ok(AccError::BadSigners)));
-    assert_eq!(fresh.try_init(&vec![env, k.clone(), k.clone()], &1), Err(Ok(AccError::BadSigners)));
+    assert_eq!(
+        fresh.try_init(&vec![env, k.clone()], &0),
+        Err(Ok(AccError::BadSigners))
+    );
+    assert_eq!(
+        fresh.try_init(&vec![env, k.clone()], &2),
+        Err(Ok(AccError::BadSigners))
+    );
+    assert_eq!(
+        fresh.try_init(&vec![env, k.clone(), k.clone()], &1),
+        Err(Ok(AccError::BadSigners))
+    );
     let mut six = Vec::new(env);
     for i in 0..6u8 {
         six.push_back(pk(env, &officer(20 + i)));
@@ -152,7 +208,12 @@ fn init_twice_fails_and_bad_signer_sets_are_rejected() {
 fn rotate_needs_the_accounts_own_quorum() {
     let s = setup();
     let env = &s.env;
-    let new_keys = vec![env, pk(env, &officer(4)), pk(env, &officer(5)), pk(env, &officer(6))];
+    let new_keys = vec![
+        env,
+        pk(env, &officer(4)),
+        pk(env, &officer(5)),
+        pk(env, &officer(6)),
+    ];
 
     // No authorisation at all: rejected by the host.
     assert!(s.client.try_rotate(&new_keys, &2).is_err());
@@ -182,18 +243,37 @@ fn rotate_needs_the_accounts_own_quorum() {
         args: (new_keys.clone(), 3u32).into_val(env),
         sub_invokes: &[],
     };
-    env.set_auths(&[crate::testutils::signed_entry(env, &s.addr, &[&s.keys[0]], &invoke, 1, false)]);
+    env.set_auths(&[crate::testutils::signed_entry(
+        env,
+        &s.addr,
+        &[&s.keys[0]],
+        &invoke,
+        1,
+        false,
+    )]);
     assert!(s.client.try_rotate(&new_keys, &3).is_err());
     assert_eq!(s.client.signers().1, 2);
 
     // Two officers' real signatures over this exact invocation: accepted.
-    env.set_auths(&[crate::testutils::signed_entry(env, &s.addr, &[&s.keys[0], &s.keys[2]], &invoke, 2, false)]);
+    env.set_auths(&[crate::testutils::signed_entry(
+        env,
+        &s.addr,
+        &[&s.keys[0], &s.keys[2]],
+        &invoke,
+        2,
+        false,
+    )]);
     s.client.rotate(&new_keys, &3);
     assert_eq!(s.client.signers(), (new_keys.clone(), 3));
 
     // With mocked auth the recorded auth tree shows the account authorising itself.
     let s2 = setup();
-    let new_keys = vec![&s2.env, pk(&s2.env, &officer(4)), pk(&s2.env, &officer(5)), pk(&s2.env, &officer(6))];
+    let new_keys = vec![
+        &s2.env,
+        pk(&s2.env, &officer(4)),
+        pk(&s2.env, &officer(5)),
+        pk(&s2.env, &officer(6)),
+    ];
     s2.env.mock_all_auths();
     s2.client.rotate(&new_keys, &3);
     assert_eq!(
@@ -214,13 +294,20 @@ fn rotate_needs_the_accounts_own_quorum() {
     // Old officers can no longer authorise the rotated account.
     let env = &s.env;
     let payload = BytesN::random(env);
-    let old = sorted(env, std::vec![sign(env, &s.keys[0], &payload), sign(env, &s.keys[1], &payload)]);
+    let old = sorted(
+        env,
+        std::vec![
+            sign(env, &s.keys[0], &payload),
+            sign(env, &s.keys[1], &payload)
+        ],
+    );
     assert_eq!(check(&s, &payload, old), Err(Ok(AccError::UnknownSigner)));
 
     // Rotation validates like init.
     s2.env.mock_all_auths();
     assert_eq!(
-        s2.client.try_rotate(&vec![&s2.env, pk(&s2.env, &officer(4))], &2),
+        s2.client
+            .try_rotate(&vec![&s2.env, pk(&s2.env, &officer(4))], &2),
         Err(Ok(AccError::BadSigners))
     );
 }

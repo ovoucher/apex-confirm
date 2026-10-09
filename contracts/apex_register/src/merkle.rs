@@ -42,8 +42,16 @@ pub fn leaf_hash(env: &Env, leaf: &Leaf) -> BytesN<32> {
 pub fn leaf_node(env: &Env, leaf: &Leaf) -> Node {
     Node {
         hash: leaf_hash(env, leaf),
-        dep: if leaf.kind == KIND_DEPOSIT { leaf.balance } else { 0 },
-        loan: if leaf.kind == KIND_LOAN { leaf.balance } else { 0 },
+        dep: if leaf.kind == KIND_DEPOSIT {
+            leaf.balance
+        } else {
+            0
+        },
+        loan: if leaf.kind == KIND_LOAN {
+            leaf.balance
+        } else {
+            0
+        },
     }
 }
 
@@ -52,7 +60,11 @@ pub fn empty_node(env: &Env, period: u32, index: u32) -> Node {
     let mut b = Bytes::from_slice(env, EMPTY_TAG);
     put_u32(&mut b, period);
     put_u32(&mut b, index);
-    Node { hash: sha(env, &b), dep: 0, loan: 0 }
+    Node {
+        hash: sha(env, &b),
+        dep: 0,
+        loan: 0,
+    }
 }
 
 /// `sha256("APEX-NODE-v1" ‖ L.hash ‖ L.dep ‖ L.loan ‖ R.hash ‖ R.dep ‖ R.loan)` with checked sums.
@@ -66,7 +78,11 @@ pub fn parent(env: &Env, l: &Node, r: &Node) -> Result<Node, Error> {
     b.append(&r.hash.clone().into());
     put_i128(&mut b, r.dep);
     put_i128(&mut b, r.loan);
-    Ok(Node { hash: sha(env, &b), dep, loan })
+    Ok(Node {
+        hash: sha(env, &b),
+        dep,
+        loan,
+    })
 }
 
 /// `ceil(log2(max(leaf_count, 2)))`.
@@ -81,14 +97,23 @@ pub fn depth_for(leaf_count: u32) -> u32 {
 
 /// Recompute the root from a leaf node and its sibling path. The direction at level `k`
 /// is bit `k` of `index` (0 = the running node is the left child).
-pub fn root_from_proof(env: &Env, start: Node, index: u32, proof: &Vec<Node>) -> Result<Node, Error> {
+pub fn root_from_proof(
+    env: &Env,
+    start: Node,
+    index: u32,
+    proof: &Vec<Node>,
+) -> Result<Node, Error> {
     let mut cur = start;
     let mut idx = index;
     for sib in proof.iter() {
         if sib.dep < 0 || sib.loan < 0 {
             return Err(Error::NegativeSum);
         }
-        cur = if idx & 1 == 0 { parent(env, &cur, &sib)? } else { parent(env, &sib, &cur)? };
+        cur = if idx & 1 == 0 {
+            parent(env, &cur, &sib)?
+        } else {
+            parent(env, &sib, &cur)?
+        };
         idx >>= 1;
     }
     Ok(cur)

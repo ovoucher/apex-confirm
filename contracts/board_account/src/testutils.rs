@@ -7,8 +7,9 @@ use crate::Sig;
 use ed25519_dalek::{Signer, SigningKey};
 use soroban_sdk::testutils::MockAuthInvoke;
 use soroban_sdk::xdr::{
-    self, HashIdPreimage, HashIdPreimageSorobanAuthorization, Limits, ScVal, SorobanAddressCredentials,
-    SorobanAuthorizationEntry, SorobanAuthorizedInvocation, SorobanCredentials, WriteXdr,
+    self, HashIdPreimage, HashIdPreimageSorobanAuthorization, Limits, ScVal,
+    SorobanAddressCredentials, SorobanAuthorizationEntry, SorobanAuthorizedInvocation,
+    SorobanCredentials, WriteXdr,
 };
 use soroban_sdk::{Address, Bytes, BytesN, Env, IntoVal, TryFromVal, Vec};
 

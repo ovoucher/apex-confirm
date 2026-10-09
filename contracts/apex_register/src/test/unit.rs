@@ -31,7 +31,17 @@ fn small_tree(env: &Env, period: u32) -> Tree {
 fn init_twice_fails() {
     let w = World::new(0);
     assert_err!(
-        w.c.try_init(&w.registrar, &w.apex, &Symbol::new(&w.env, "KES"), &2, &10, &5, &45, &90, &10_000),
+        w.c.try_init(
+            &w.registrar,
+            &w.apex,
+            &Symbol::new(&w.env, "KES"),
+            &2,
+            &10,
+            &5,
+            &45,
+            &90,
+            &10_000
+        ),
         Error::AlreadyInitialised
     );
 }
@@ -44,16 +54,38 @@ fn init_rejects_registrar_equal_to_apex_and_bad_windows() {
     let r = Address::generate(&env);
     let a = Address::generate(&env);
     let kes = Symbol::new(&env, "KES");
-    assert_err!(c.try_init(&r, &r, &kes, &2, &10, &5, &45, &90, &10_000), Error::RoleConflict);
-    assert_err!(c.try_init(&r, &a, &kes, &2, &0, &5, &45, &90, &10_000), Error::BadConfig);
-    assert_err!(c.try_init(&r, &a, &kes, &2, &10, &0, &45, &90, &10_000), Error::BadConfig);
-    assert_err!(c.try_init(&r, &a, &kes, &2, &10, &11, &45, &90, &10_000), Error::BadConfig);
-    assert_err!(c.try_init(&r, &a, &kes, &2, &10, &5, &45, &90, &0), Error::BadConfig);
-    assert_err!(c.try_init(&r, &a, &kes, &2, &10, &5, &45, &90, &20_001), Error::BadConfig);
+    assert_err!(
+        c.try_init(&r, &r, &kes, &2, &10, &5, &45, &90, &10_000),
+        Error::RoleConflict
+    );
+    assert_err!(
+        c.try_init(&r, &a, &kes, &2, &0, &5, &45, &90, &10_000),
+        Error::BadConfig
+    );
+    assert_err!(
+        c.try_init(&r, &a, &kes, &2, &10, &0, &45, &90, &10_000),
+        Error::BadConfig
+    );
+    assert_err!(
+        c.try_init(&r, &a, &kes, &2, &10, &11, &45, &90, &10_000),
+        Error::BadConfig
+    );
+    assert_err!(
+        c.try_init(&r, &a, &kes, &2, &10, &5, &45, &90, &0),
+        Error::BadConfig
+    );
+    assert_err!(
+        c.try_init(&r, &a, &kes, &2, &10, &5, &45, &90, &20_001),
+        Error::BadConfig
+    );
     // views before init
     assert_err!(c.try_config(), Error::NotInitialised);
     c.init(&r, &a, &kes, &2, &10, &5, &45, &90, &10_000);
-    assert_eq!(env.auths()[0].0, r, "init requires the registrar's authorisation");
+    assert_eq!(
+        env.auths()[0].0,
+        r,
+        "init requires the registrar's authorisation"
+    );
     assert_eq!(c.config().alert_bps, 10_000);
 }
 
@@ -88,9 +120,8 @@ fn register_member_is_registrar_only_with_auth_tree() {
     // The apex authorising (instead of the registrar) is rejected: the apex can never
     // admit the members that confirm its loans.
     let b2 = Address::generate(&w.env);
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.apex,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -109,12 +140,24 @@ fn register_member_role_conflicts_and_numbers() {
     let w = World::new(2);
     let lic = h(&w.env, "lic");
     // a board already bound to member 1
-    assert_err!(w.c.try_register_member(&3, &w.boards[1], &lic), Error::RoleConflict);
+    assert_err!(
+        w.c.try_register_member(&3, &w.boards[1], &lic),
+        Error::RoleConflict
+    );
     // the apex's own address as a board
-    assert_err!(w.c.try_register_member(&3, &w.apex, &lic), Error::RoleConflict);
+    assert_err!(
+        w.c.try_register_member(&3, &w.apex, &lic),
+        Error::RoleConflict
+    );
     // the registrar or a custodian as a board
-    assert_err!(w.c.try_register_member(&3, &w.registrar, &lic), Error::RoleConflict);
-    assert_err!(w.c.try_register_member(&3, &w.custodian, &lic), Error::RoleConflict);
+    assert_err!(
+        w.c.try_register_member(&3, &w.registrar, &lic),
+        Error::RoleConflict
+    );
+    assert_err!(
+        w.c.try_register_member(&3, &w.custodian, &lic),
+        Error::RoleConflict
+    );
     let b = Address::generate(&w.env);
     assert_err!(w.c.try_register_member(&0, &b, &lic), Error::BadMemberNo);
     assert_err!(w.c.try_register_member(&1025, &b, &lic), Error::BadMemberNo);
@@ -135,9 +178,8 @@ fn set_member_active_is_registrar_only() {
     w.c.set_member_active(&1, &true);
     assert!(w.c.member(&1).unwrap().active);
     // board authorising for itself is not enough
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.boards[1],
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -161,7 +203,10 @@ fn rotate_board_rebinds_and_checks_conflicts() {
     assert_eq!(w.c.member_by_board(&w.boards[1]), None);
     assert_err!(w.c.try_rotate_board(&1, &w.boards[2]), Error::RoleConflict);
     assert_err!(w.c.try_rotate_board(&1, &w.apex), Error::RoleConflict);
-    assert_err!(w.c.try_rotate_board(&7, &Address::generate(&w.env)), Error::UnknownMember);
+    assert_err!(
+        w.c.try_rotate_board(&7, &Address::generate(&w.env)),
+        Error::UnknownMember
+    );
 }
 
 // ============================================================ set_custodian / set_apex / transfer_registrar
@@ -171,9 +216,8 @@ fn set_custodian_registrar_only_and_apex_cannot() {
     let w = World::new(1);
     let bank2 = Address::generate(&w.env);
     // the apex tries to choose its own custodian: auth failure
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.apex,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -204,12 +248,18 @@ fn set_custodian_registrar_only_and_apex_cannot() {
     );
     // role conflicts
     assert_err!(w.c.try_set_custodian(&w.apex, &true), Error::RoleConflict);
-    assert_err!(w.c.try_set_custodian(&w.boards[1], &true), Error::RoleConflict);
+    assert_err!(
+        w.c.try_set_custodian(&w.boards[1], &true),
+        Error::RoleConflict
+    );
     // a fifth active custodian
     w.c.set_custodian(&Address::generate(&w.env), &true);
     w.c.set_custodian(&Address::generate(&w.env), &true);
     assert_eq!(w.c.custodians().len(), 4);
-    assert_err!(w.c.try_set_custodian(&Address::generate(&w.env), &true), Error::TooManyCustodians);
+    assert_err!(
+        w.c.try_set_custodian(&Address::generate(&w.env), &true),
+        Error::TooManyCustodians
+    );
     // deactivating frees a slot; re-activating an active one is idempotent
     w.c.set_custodian(&bank2, &false);
     assert_eq!(w.c.custodians().len(), 3);
@@ -232,14 +282,16 @@ fn set_apex_and_transfer_registrar() {
     assert_err!(w.c.try_transfer_registrar(&new_apex), Error::RoleConflict);
     w.c.transfer_registrar(&new_reg);
     let auths: std::vec::Vec<Address> = w.env.auths().iter().map(|a| a.0.clone()).collect();
-    assert!(auths.contains(&w.registrar) && auths.contains(&new_reg), "both registrars sign");
+    assert!(
+        auths.contains(&w.registrar) && auths.contains(&new_reg),
+        "both registrars sign"
+    );
     assert_eq!(w.c.config().registrar, new_reg);
 
     // only the new registrar signing is not enough
     let other = Address::generate(&w.env);
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &other,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -258,9 +310,8 @@ fn set_apex_and_transfer_registrar() {
 fn open_period_apex_only() {
     let w = World::new(1);
     w.at(T_OPEN);
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.registrar,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -304,18 +355,33 @@ fn open_period_rules() {
     let t = Tree::build(&w.env, 1, &[dep(1, 100)]);
     let p = w.open_post(&t, 100);
     // previous not closed (Open and Posted)
-    assert_err!(w.c.try_open_period(&(AS_OF_AUG + DAY), &0), Error::PreviousNotClosed);
+    assert_err!(
+        w.c.try_open_period(&(AS_OF_AUG + DAY), &0),
+        Error::PreviousNotClosed
+    );
     w.confirm(p, &t, 0);
     w.c.close_period(&p);
     // non-increasing as_of
     w.at(T_OPEN + 2 * DAY);
-    assert_err!(w.c.try_open_period(&AS_OF_AUG, &0), Error::AsOfNotIncreasing);
-    assert_err!(w.c.try_open_period(&(AS_OF_AUG - 1), &0), Error::AsOfNotIncreasing);
+    assert_err!(
+        w.c.try_open_period(&AS_OF_AUG, &0),
+        Error::AsOfNotIncreasing
+    );
+    assert_err!(
+        w.c.try_open_period(&(AS_OF_AUG - 1), &0),
+        Error::AsOfNotIncreasing
+    );
     // supersedes an open (not closed) period id / a future id
-    assert_err!(w.c.try_open_period(&(AS_OF_AUG + DAY), &5), Error::BadSupersedes);
+    assert_err!(
+        w.c.try_open_period(&(AS_OF_AUG + DAY), &5),
+        Error::BadSupersedes
+    );
     // no active custodian
     w.c.set_custodian(&w.custodian, &false);
-    assert_err!(w.c.try_open_period(&(AS_OF_AUG + DAY), &0), Error::NoCustodian);
+    assert_err!(
+        w.c.try_open_period(&(AS_OF_AUG + DAY), &0),
+        Error::NoCustodian
+    );
     w.c.set_custodian(&w.custodian, &true);
     // a correction of period 1 may reuse its balance date; both stay visible
     let p2 = w.c.open_period(&AS_OF_AUG, &1);
@@ -336,8 +402,14 @@ fn post_root_rules() {
     assert_err!(w.c.try_post_root(&1, &t.root(), &2, &fh), Error::BadState);
     w.at(T_OPEN);
     let p = w.c.open_period(&AS_OF_AUG, &0);
-    assert_err!(w.c.try_post_root(&p, &t.root(), &0, &fh), Error::BadLeafCount);
-    assert_err!(w.c.try_post_root(&p, &t.root(), &4097, &fh), Error::BadLeafCount);
+    assert_err!(
+        w.c.try_post_root(&p, &t.root(), &0, &fh),
+        Error::BadLeafCount
+    );
+    assert_err!(
+        w.c.try_post_root(&p, &t.root(), &4097, &fh),
+        Error::BadLeafCount
+    );
     let mut neg = t.root();
     neg.dep = -1;
     assert_err!(w.c.try_post_root(&p, &neg, &2, &fh), Error::NegativeSum);
@@ -345,9 +417,8 @@ fn post_root_rules() {
     neg2.loan = -5;
     assert_err!(w.c.try_post_root(&p, &neg2, &2, &fh), Error::NegativeSum);
     // only the apex
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.registrar,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -386,7 +457,10 @@ fn confirm_happy_path_updates_tally_and_bit() {
     assert_eq!(tl.responded, 1);
     assert_eq!(tl.confirmed_loans, 400_000 * KES);
     assert_eq!(tl.recognised_loans, 400_000 * KES);
-    assert_eq!(w.c.unresponded(&p, &0, &10), vec![&w.env, 0u32, 1, 3, 4, 5, 6]);
+    assert_eq!(
+        w.c.unresponded(&p, &0, &10),
+        vec![&w.env, 0u32, 1, 3, 4, 5, 6]
+    );
     let r = w.c.response(&p, &2).unwrap();
     assert_eq!(r.verdict, VERDICT_CONFIRMED);
     assert_eq!(r.member_no, 1);
@@ -409,9 +483,21 @@ fn a_line_cannot_be_confirmed_twice_nor_confirmed_then_disputed() {
     let p = w.open_post(&t, 0);
     w.confirm(p, &t, 2);
     let l = t.leaf(2);
-    assert_err!(w.c.try_confirm(&p, &1, &l, &t.proof(2)), Error::AlreadyResponded);
     assert_err!(
-        w.c.try_dispute(&p, &1, &l, &t.proof(2), &1, &0, &REASON_BALANCE_WRONG, &zero32(&w.env)),
+        w.c.try_confirm(&p, &1, &l, &t.proof(2)),
+        Error::AlreadyResponded
+    );
+    assert_err!(
+        w.c.try_dispute(
+            &p,
+            &1,
+            &l,
+            &t.proof(2),
+            &1,
+            &0,
+            &REASON_BALANCE_WRONG,
+            &zero32(&w.env)
+        ),
         Error::AlreadyResponded
     );
     assert_err!(
@@ -515,9 +601,8 @@ fn wrong_member_cases() {
 
     // (i) member 2's board tries to confirm member 1's line as member 1: member 1's board
     // must authorise and did not.
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.boards[2],
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -546,9 +631,8 @@ fn wrong_member_cases() {
     // (iv) after rotate_board, the old board can no longer sign for member 1
     let new_board = Address::generate(&w.env);
     w.c.rotate_board(&1, &new_board);
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.boards[1],
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -578,8 +662,14 @@ fn confirm_needs_a_posted_period() {
     let t = Tree::build(&w.env, 1, &[dep(1, 100)]);
     w.at(T_OPEN);
     let p = w.c.open_period(&AS_OF_AUG, &0);
-    assert_err!(w.c.try_confirm(&p, &1, &t.leaf(0), &t.proof(0)), Error::BadState);
-    assert_err!(w.c.try_confirm(&9, &1, &t.leaf(0), &t.proof(0)), Error::BadState);
+    assert_err!(
+        w.c.try_confirm(&p, &1, &t.leaf(0), &t.proof(0)),
+        Error::BadState
+    );
+    assert_err!(
+        w.c.try_confirm(&9, &1, &t.leaf(0), &t.proof(0)),
+        Error::BadState
+    );
 }
 
 // ============================================================ dispute
@@ -593,17 +683,29 @@ fn dispute_argument_rules() {
     let pr = t.proof(4);
     let ev = h(&w.env, "evidence.pdf");
     // NOT_OURS with a non-zero claim
-    assert_err!(w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &REASON_NOT_OURS, &ev), Error::BadClaim);
+    assert_err!(
+        w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &REASON_NOT_OURS, &ev),
+        Error::BadClaim
+    );
     // negative claim
-    assert_err!(w.c.try_dispute(&p, &3, &l, &pr, &-1, &10, &REASON_BALANCE_WRONG, &ev), Error::BadClaim);
+    assert_err!(
+        w.c.try_dispute(&p, &3, &l, &pr, &-1, &10, &REASON_BALANCE_WRONG, &ev),
+        Error::BadClaim
+    );
     // same balance and arrears: use confirm
     assert_err!(
         w.c.try_dispute(&p, &3, &l, &pr, &l.balance, &10, &REASON_OTHER, &ev),
         Error::NotADispute
     );
     // reasons 0 and 5
-    assert_err!(w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &0, &ev), Error::BadReason);
-    assert_err!(w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &5, &ev), Error::BadReason);
+    assert_err!(
+        w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &0, &ev),
+        Error::BadReason
+    );
+    assert_err!(
+        w.c.try_dispute(&p, &3, &l, &pr, &1, &10, &5, &ev),
+        Error::BadReason
+    );
     // same balance, different arrears is a real dispute
     w.c.dispute(&p, &3, &l, &pr, &l.balance, &30, &REASON_ARREARS_WRONG, &ev);
     let r = w.c.response(&p, &4).unwrap();
@@ -630,20 +732,56 @@ fn disputed_loan_recognition_rule() {
     let p = w.open_post(&t, 0);
     let ev = zero32(&w.env);
     // claimed below booked, performing: min(claimed, booked) recognised
-    w.c.dispute(&p, &1, &t.leaf(0), &t.proof(0), &(25_000_000 * KES), &0, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &1,
+        &t.leaf(0),
+        &t.proof(0),
+        &(25_000_000 * KES),
+        &0,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.recognised_loans, 25_000_000 * KES);
     assert_eq!(tl.disputed_loans_booked, 90_000_000 * KES);
     assert_eq!(tl.disputed_loans_ack, 25_000_000 * KES);
     // claimed below booked but claimed arrears > 90: nothing recognised
-    w.c.dispute(&p, &2, &t.leaf(1), &t.proof(1), &(15_000_000 * KES), &91, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &2,
+        &t.leaf(1),
+        &t.proof(1),
+        &(15_000_000 * KES),
+        &91,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.recognised_loans, 25_000_000 * KES);
     assert_eq!(tl.disputed_loans_ack, 40_000_000 * KES);
     // exactly 90 days still performing
-    w.c.dispute(&p, &3, &t.leaf(2), &t.proof(2), &(10_000_000 * KES), &90, &REASON_ARREARS_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &3,
+        &t.leaf(2),
+        &t.proof(2),
+        &(10_000_000 * KES),
+        &90,
+        &REASON_ARREARS_WRONG,
+        &ev,
+    );
     // claimed above booked: capped at booked
-    w.c.dispute(&p, &3, &t.leaf(3), &t.proof(3), &(7_000_000 * KES), &0, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &3,
+        &t.leaf(3),
+        &t.proof(3),
+        &(7_000_000 * KES),
+        &0,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.recognised_loans, (25 + 10 + 5) * 1_000_000 * KES);
     assert!(tl.recognised_loans <= tl.confirmed_loans + tl.disputed_loans_ack);
@@ -654,14 +792,36 @@ fn disputed_loan_recognition_rule() {
 #[test]
 fn deposit_dispute_uplift_rule() {
     let w = World::new(2);
-    let t = Tree::build(&w.env, 1, &[dep(1, 100_000_000 * KES), dep(2, 50_000_000 * KES)]);
+    let t = Tree::build(
+        &w.env,
+        1,
+        &[dep(1, 100_000_000 * KES), dep(2, 50_000_000 * KES)],
+    );
     let p = w.open_post(&t, 0);
     let ev = zero32(&w.env);
     // member says the apex holds more than booked: difference is added to liabilities
-    w.c.dispute(&p, &1, &t.leaf(0), &t.proof(0), &(118_500_000 * KES), &0, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &1,
+        &t.leaf(0),
+        &t.proof(0),
+        &(118_500_000 * KES),
+        &0,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     assert_eq!(w.c.tally(&p).unwrap().deposit_uplift, 18_500_000 * KES);
     // member says less: nothing is subtracted
-    w.c.dispute(&p, &2, &t.leaf(1), &t.proof(1), &(40_000_000 * KES), &0, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &2,
+        &t.leaf(1),
+        &t.proof(1),
+        &(40_000_000 * KES),
+        &0,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.deposit_uplift, 18_500_000 * KES);
     assert_eq!(tl.confirmed_dep, 0);
@@ -689,7 +849,11 @@ fn confirm_batch_of_16_succeeds() {
         items.push_back((t.leaf(i), t.proof(i)));
     }
     w.c.confirm_batch(&p, &1, &items);
-    assert_eq!(w.env.auths().len(), 1, "one board authorisation for the whole batch");
+    assert_eq!(
+        w.env.auths().len(),
+        1,
+        "one board authorisation for the whole batch"
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.responded, 16);
     assert_eq!(w.c.member_responses(&p, &1), 16);
@@ -741,11 +905,17 @@ fn claim_omitted_rules() {
     assert_err!(w.c.try_claim_omitted(&p, &3, &-1, &ev), Error::BadClaim);
     w.c.claim_omitted(&p, &3, &(12_000_000 * KES), &ev);
     assert_eq!(w.env.auths()[0].0, w.boards[3]);
-    assert_err!(w.c.try_claim_omitted(&p, &3, &5, &ev), Error::AlreadyClaimed);
+    assert_err!(
+        w.c.try_claim_omitted(&p, &3, &5, &ev),
+        Error::AlreadyClaimed
+    );
     let tl = w.c.tally(&p).unwrap();
     assert_eq!(tl.deposit_uplift, 12_000_000 * KES);
     assert_eq!(tl.omitted_count, 1);
-    assert_eq!(w.c.omitted(&p, &3).unwrap().claimed_deposit, 12_000_000 * KES);
+    assert_eq!(
+        w.c.omitted(&p, &3).unwrap().claimed_deposit,
+        12_000_000 * KES
+    );
     // a zero claim ("we hold nothing, received no lines") counts as a response
     w.c.claim_omitted(&p, &2, &0, &ev);
     w.confirm(p, &t, 0);
@@ -766,16 +936,27 @@ fn attest_cash_rules() {
     // a custodian added after open_period is not in the snapshot
     let late_bank = Address::generate(&w.env);
     w.c.set_custodian(&late_bank, &true);
-    assert_err!(w.c.try_attest_cash(&p, &late_bank, &5, &AS_OF_AUG, &sh), Error::NotCustodian);
+    assert_err!(
+        w.c.try_attest_cash(&p, &late_bank, &5, &AS_OF_AUG, &sh),
+        Error::NotCustodian
+    );
     // a stranger
-    assert_err!(w.c.try_attest_cash(&p, &w.apex, &5, &AS_OF_AUG, &sh), Error::NotCustodian);
+    assert_err!(
+        w.c.try_attest_cash(&p, &w.apex, &5, &AS_OF_AUG, &sh),
+        Error::NotCustodian
+    );
     // as_of mismatch, negative balance
-    assert_err!(w.c.try_attest_cash(&p, &w.custodian, &5, &(AS_OF_AUG + 1), &sh), Error::AsOfMismatch);
-    assert_err!(w.c.try_attest_cash(&p, &w.custodian, &-5, &AS_OF_AUG, &sh), Error::BadClaim);
+    assert_err!(
+        w.c.try_attest_cash(&p, &w.custodian, &5, &(AS_OF_AUG + 1), &sh),
+        Error::AsOfMismatch
+    );
+    assert_err!(
+        w.c.try_attest_cash(&p, &w.custodian, &-5, &AS_OF_AUG, &sh),
+        Error::BadClaim
+    );
     // only the custodian itself can sign its attestation
-    let r = w
-        .c
-        .mock_auths(&[MockAuth {
+    let r =
+        w.c.mock_auths(&[MockAuth {
             address: &w.apex,
             invoke: &MockAuthInvoke {
                 contract: &w.id,
@@ -794,8 +975,14 @@ fn attest_cash_rules() {
     assert_eq!(cash.len(), 1);
     assert_eq!(cash.get(0).unwrap().balance, 305_412_318_55);
     assert!(!cash.get(0).unwrap().late);
-    assert_err!(w.c.try_attest_cash(&p, &w.custodian, &5, &AS_OF_AUG, &sh), Error::AlreadyAttested);
-    assert_err!(w.c.try_attest_cash(&9, &w.custodian, &5, &AS_OF_AUG, &sh), Error::BadState);
+    assert_err!(
+        w.c.try_attest_cash(&p, &w.custodian, &5, &AS_OF_AUG, &sh),
+        Error::AlreadyAttested
+    );
+    assert_err!(
+        w.c.try_attest_cash(&9, &w.custodian, &5, &AS_OF_AUG, &sh),
+        Error::BadState
+    );
 }
 
 #[test]
@@ -856,10 +1043,28 @@ fn report_matches_hand_computed_seven_line_tree() {
     w.confirm(p, &t, 2); // m1 loan 400,000 performing
     w.confirm(p, &t, 1); // m2 deposit 500,000
     w.confirm(p, &t, 3); // m2 loan 300,000, 120 days in arrears: not recognised
-    // m2 leaves index 5 (100,000) unanswered
+                         // m2 leaves index 5 (100,000) unanswered
     let ev = h(&w.env, "board minute 2026-09-03");
-    w.c.dispute(&p, &3, &t.leaf(4), &t.proof(4), &(150_000 * KES), &10, &REASON_BALANCE_WRONG, &ev);
-    w.c.dispute(&p, &3, &t.leaf(6), &t.proof(6), &(280_000 * KES), &0, &REASON_BALANCE_WRONG, &ev);
+    w.c.dispute(
+        &p,
+        &3,
+        &t.leaf(4),
+        &t.proof(4),
+        &(150_000 * KES),
+        &10,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
+    w.c.dispute(
+        &p,
+        &3,
+        &t.leaf(6),
+        &t.proof(6),
+        &(280_000 * KES),
+        &0,
+        &REASON_BALANCE_WRONG,
+        &ev,
+    );
     w.at(T_OPEN + CONFIRM_WINDOW);
     let r = w.c.close_period(&p);
     // close and coverage_alert events were emitted
@@ -899,9 +1104,15 @@ fn report_matches_hand_computed_seven_line_tree() {
     assert_eq!(w.c.disputes(&p, &1, &5).get(0).unwrap().index, 6);
 
     // responses after close fail
-    assert_err!(w.c.try_confirm(&p, &2, &t.leaf(5), &t.proof(5)), Error::BadState);
+    assert_err!(
+        w.c.try_confirm(&p, &2, &t.leaf(5), &t.proof(5)),
+        Error::BadState
+    );
     assert_err!(w.c.try_claim_omitted(&p, &2, &0, &ev), Error::BadState);
-    assert_err!(w.c.try_attest_cash(&p, &w.custodian, &1, &AS_OF_AUG, &ev), Error::BadState);
+    assert_err!(
+        w.c.try_attest_cash(&p, &w.custodian, &1, &AS_OF_AUG, &ev),
+        Error::BadState
+    );
     // the report never changes
     assert_eq!(w.c.report(&p), Some(r));
 }
@@ -980,7 +1191,13 @@ fn overdue_streak_increments_across_periods_and_resets_on_response() {
     w.at(T_OPEN + 30 * DAY);
     let p2 = w.c.open_period(&(AS_OF_AUG + 30 * DAY), &0);
     let t2 = Tree::build(&w.env, 2, &[dep(1, 10), dep(2, 10)]);
-    w.c.attest_cash(&p2, &w.custodian, &10, &(AS_OF_AUG + 30 * DAY), &zero32(&w.env));
+    w.c.attest_cash(
+        &p2,
+        &w.custodian,
+        &10,
+        &(AS_OF_AUG + 30 * DAY),
+        &zero32(&w.env),
+    );
     w.c.post_root(&p2, &t2.root(), &2, &zero32(&w.env));
     w.confirm(p2, &t2, 0);
     w.at(T_OPEN + 30 * DAY + CONFIRM_WINDOW + 1);
@@ -991,7 +1208,13 @@ fn overdue_streak_increments_across_periods_and_resets_on_response() {
     w.at(T_OPEN + 60 * DAY);
     let p3 = w.c.open_period(&(AS_OF_AUG + 60 * DAY), &0);
     let t3 = Tree::build(&w.env, 3, &[dep(1, 10), dep(2, 10)]);
-    w.c.attest_cash(&p3, &w.custodian, &10, &(AS_OF_AUG + 60 * DAY), &zero32(&w.env));
+    w.c.attest_cash(
+        &p3,
+        &w.custodian,
+        &10,
+        &(AS_OF_AUG + 60 * DAY),
+        &zero32(&w.env),
+    );
     w.c.post_root(&p3, &t3.root(), &2, &zero32(&w.env));
     w.confirm(p3, &t3, 1);
     w.at(T_OPEN + 60 * DAY + CONFIRM_WINDOW + 1);
@@ -1103,19 +1326,51 @@ fn i128_overflow_in_a_crafted_tree_returns_overflow() {
         arrears_days: 0,
         salt: h(e, "S"),
     };
-    let crafted_root = Node { hash: h(e, "root"), dep: i128::MAX, loan: 0 };
+    let crafted_root = Node {
+        hash: h(e, "root"),
+        dep: i128::MAX,
+        loan: 0,
+    };
     w.at(T_OPEN);
     let p = w.c.open_period(&AS_OF_AUG, &0);
     w.c.post_root(&p, &crafted_root, &2, &zero32(e));
-    let sibling = Node { hash: h(e, "sib"), dep: 1, loan: 0 };
-    assert_err!(w.c.try_confirm(&p, &1, &leaf, &vec![e, sibling]), Error::Overflow);
-    let loan_leaf = Leaf { kind: KIND_LOAN, ..leaf.clone() };
-    let sib2 = Node { hash: h(e, "sib"), dep: 0, loan: 1 };
-    assert_err!(w.c.try_confirm(&p, &1, &loan_leaf, &vec![e, sib2]), Error::Overflow);
+    let sibling = Node {
+        hash: h(e, "sib"),
+        dep: 1,
+        loan: 0,
+    };
+    assert_err!(
+        w.c.try_confirm(&p, &1, &leaf, &vec![e, sibling]),
+        Error::Overflow
+    );
+    let loan_leaf = Leaf {
+        kind: KIND_LOAN,
+        ..leaf.clone()
+    };
+    let sib2 = Node {
+        hash: h(e, "sib"),
+        dep: 0,
+        loan: 1,
+    };
+    assert_err!(
+        w.c.try_confirm(&p, &1, &loan_leaf, &vec![e, sib2]),
+        Error::Overflow
+    );
     // report arithmetic overflow is an error too, not a panic
-    let t = Tally { cash: i128::MAX, recognised_loans: 1, ..Tally::default() };
-    let root = Node { hash: zero32(e), dep: 1, loan: 0 };
-    assert_eq!(compute_report(1, 10_000, &root, 1, &t, 0), Err(Error::Overflow));
+    let t = Tally {
+        cash: i128::MAX,
+        recognised_loans: 1,
+        ..Tally::default()
+    };
+    let root = Node {
+        hash: zero32(e),
+        dep: 1,
+        loan: 0,
+    };
+    assert_eq!(
+        compute_report(1, 10_000, &root, 1, &t, 0),
+        Err(Error::Overflow)
+    );
 }
 
 // ============================================================ events

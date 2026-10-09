@@ -38,7 +38,12 @@ impl<'a> Replay<'a> {
             let m = js_u32(&a["member"]);
             match a["type"].as_str().unwrap() {
                 "confirm" => {
-                    let idx: std::vec::Vec<u32> = a["indexes"].as_array().unwrap().iter().map(js_u32).collect();
+                    let idx: std::vec::Vec<u32> = a["indexes"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(js_u32)
+                        .collect();
                     for chunk in idx.chunks(16) {
                         let mut items = Vec::new(self.env);
                         for i in chunk {
@@ -61,7 +66,12 @@ impl<'a> Replay<'a> {
                     );
                 }
                 "omitted" => {
-                    self.c.claim_omitted(&p, &m, &js_i128(&a["claimed"]), &hex32(self.env, a["evidence"].as_str().unwrap()));
+                    self.c.claim_omitted(
+                        &p,
+                        &m,
+                        &js_i128(&a["claimed"]),
+                        &hex32(self.env, a["evidence"].as_str().unwrap()),
+                    );
                 }
                 other => panic!("unknown action {other}"),
             }
@@ -73,7 +83,13 @@ impl<'a> Replay<'a> {
 
     fn attest(&self, v: &serde_json::Value, p: u32) {
         self.env.ledger().set_timestamp(js_u64(&v["cash"]["at"]));
-        self.c.attest_cash(&p, self.custodian, &js_i128(&v["cash"]["balance"]), &js_u64(&v["as_of"]), &h(self.env, "statement"));
+        self.c.attest_cash(
+            &p,
+            self.custodian,
+            &js_i128(&v["cash"]["balance"]),
+            &js_u64(&v["as_of"]),
+            &h(self.env, "statement"),
+        );
     }
 
     fn watch(&self, p: u32) {
@@ -116,7 +132,17 @@ fn scenario_kuscco_pattern() {
     let registrar = Address::generate(&env);
     let apex = Address::generate(&env);
     let custodian = Address::generate(&env);
-    c.init(&registrar, &apex, &Symbol::new(&env, "KES"), &2, &CONFIRM_WINDOW, &ATTEST_WINDOW, &MAX_GAP, &90, &10_000);
+    c.init(
+        &registrar,
+        &apex,
+        &Symbol::new(&env, "KES"),
+        &2,
+        &CONFIRM_WINDOW,
+        &ATTEST_WINDOW,
+        &MAX_GAP,
+        &90,
+        &10_000,
+    );
     let mut boards = std::vec![apex.clone()];
     for no in 1..=40u32 {
         let b = Address::generate(&env);
@@ -125,10 +151,20 @@ fn scenario_kuscco_pattern() {
     }
     c.set_member_active(&38, &false);
     c.set_custodian(&custodian, &true);
-    let rp = Replay { env: &env, c: &c, boards: &boards, custodian: &custodian };
+    let rp = Replay {
+        env: &env,
+        c: &c,
+        boards: &boards,
+        custodian: &custodian,
+    };
 
     // ------------------------------------------------ 2. open for 2026-08-31, post the 159-line root
-    let leaves: std::vec::Vec<Leaf> = v1["leaves"].as_array().unwrap().iter().map(|j| leaf_from_json(&env, j)).collect();
+    let leaves: std::vec::Vec<Leaf> = v1["leaves"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|j| leaf_from_json(&env, j))
+        .collect();
     let tree = Tree::from_leaves(&env, 1, leaves);
     assert_eq!(tree.leaf_count(), 159);
     assert_eq!(tree.root().dep, ROOT_DEP);
@@ -137,15 +173,26 @@ fn scenario_kuscco_pattern() {
     let p1 = c.open_period(&js_u64(&v1["as_of"]), &0);
     assert_eq!(p1, 1);
     env.ledger().set_timestamp(js_u64(&v1["post_at"]));
-    c.post_root(&p1, &tree.root(), &159, &hex32(&env, v1["file_hash"].as_str().unwrap()));
+    c.post_root(
+        &p1,
+        &tree.root(),
+        &159,
+        &hex32(&env, v1["file_hash"].as_str().unwrap()),
+    );
 
     // Lines booked to non-members (901-903) and to dormant member 38 can never be confirmed.
     for (i, l) in tree.leaves.iter().enumerate() {
         if l.cp > 40 {
-            assert_eq!(c.try_confirm(&p1, &l.cp, l, &tree.proof(i as u32)), Err(Ok(Error::UnknownMember)));
+            assert_eq!(
+                c.try_confirm(&p1, &l.cp, l, &tree.proof(i as u32)),
+                Err(Ok(Error::UnknownMember))
+            );
         }
         if l.cp == 38 {
-            assert_eq!(c.try_confirm(&p1, &38, l, &tree.proof(i as u32)), Err(Ok(Error::MemberInactive)));
+            assert_eq!(
+                c.try_confirm(&p1, &38, l, &tree.proof(i as u32)),
+                Err(Ok(Error::MemberInactive))
+            );
         }
     }
 
@@ -157,7 +204,10 @@ fn scenario_kuscco_pattern() {
     // members 11 and 29 responded after the window
     for no in [11u32, 29] {
         for i in tree.lines_of(no) {
-            assert!(c.response(&p1, &i).unwrap().late, "member {no} line {i} is late");
+            assert!(
+                c.response(&p1, &i).unwrap().late,
+                "member {no} line {i} is late"
+            );
         }
     }
     // member 22 never responded
@@ -183,7 +233,12 @@ fn scenario_kuscco_pattern() {
     assert_eq!(r1.recognised_loans, RECOGNISED);
     assert_eq!(
         r1.flags,
-        FLAG_BELOW_ALERT | FLAG_UNCONFIRMED_LOANS | FLAG_DISPUTES | FLAG_LATE_RESPONSES | FLAG_OMITTED_CLAIMS | FLAG_GAP_WIDE
+        FLAG_BELOW_ALERT
+            | FLAG_UNCONFIRMED_LOANS
+            | FLAG_DISPUTES
+            | FLAG_LATE_RESPONSES
+            | FLAG_OMITTED_CLAIMS
+            | FLAG_GAP_WIDE
     );
     assert_eq!(r1.unresponded, 10);
     expect_report(&r1, &v1["expected"]);
@@ -197,7 +252,10 @@ fn scenario_kuscco_pattern() {
     assert_eq!(collusion.member_no, 37);
     assert_eq!(collusion.verdict, VERDICT_CONFIRMED);
     assert_eq!(collusion.booked, COLLUDING_LOAN);
-    assert!(collusion.arrears_days <= 90, "so it is recognised: confirmation cannot catch collusion");
+    assert!(
+        collusion.arrears_days <= 90,
+        "so it is recognised: confirmation cannot catch collusion"
+    );
 
     // ------------------------------------------------ 7. period 2: the apex stalls for 50 days
     let open2 = js_u64(&v2["open_at"]);
@@ -208,7 +266,12 @@ fn scenario_kuscco_pattern() {
     let tree2 = Tree::from_leaves(
         &env,
         2,
-        v2["leaves"].as_array().unwrap().iter().map(|j| leaf_from_json(&env, j)).collect(),
+        v2["leaves"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|j| leaf_from_json(&env, j))
+            .collect(),
     );
     // custodian attests while the period is still open
     rp.attest(&v2, p2);
@@ -217,13 +280,25 @@ fn scenario_kuscco_pattern() {
         assert_eq!(c.flag_stale_apex(), chk["expect"].as_bool().unwrap());
     }
     env.ledger().set_timestamp(open2 + 50 * DAY);
-    assert!(c.apex_stale_since() > 0, "apex_stale_since set after 50 days without a root");
+    assert!(
+        c.apex_stale_since() > 0,
+        "apex_stale_since set after 50 days without a root"
+    );
     env.ledger().set_timestamp(js_u64(&v2["post_at"]));
-    c.post_root(&p2, &tree2.root(), &tree2.leaf_count(), &hex32(&env, v2["file_hash"].as_str().unwrap()));
+    c.post_root(
+        &p2,
+        &tree2.root(),
+        &tree2.leaf_count(),
+        &hex32(&env, v2["file_hash"].as_str().unwrap()),
+    );
     rp.respond(&v2, p2, &tree2);
     env.ledger().set_timestamp(js_u64(&v2["watch_at"]));
     rp.watch(p2);
-    assert_eq!(c.member(&22).unwrap().overdue_streak, 2, "member 22 silent two periods running");
+    assert_eq!(
+        c.member(&22).unwrap().overdue_streak,
+        2,
+        "member 22 silent two periods running"
+    );
     assert_eq!(c.member(&11).unwrap().overdue_streak, 0);
     let r2 = c.close_period(&p2);
     expect_report(&r2, &v2["expected"]);
