@@ -65,10 +65,15 @@ const BPS: i128 = 10_000;
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
 #[repr(u32)]
 pub enum Error {
+    /// The contract has already been initialised.
     AlreadyInitialised = 1,
+    /// The contract requires initialisation before use.
     NotInitialised = 2,
+    /// The provided configuration is invalid.
     BadConfig = 3,
+    /// The provided roles have a conflict.
     RoleConflict = 4,
+    /// The provided member number is invalid.
     BadMemberNo = 5,
     MemberExists = 6,
     UnknownMember = 7,
